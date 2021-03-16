@@ -3,29 +3,47 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0381E46BDD3FE11351479D60 /* Pods_OtterKeg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B68793D97E6829FD245F6F9 /* Pods_OtterKeg.framework */; };
+		0741F93A25F434A600152966 /* SlideInPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0741F93925F434A600152966 /* SlideInPresentationController.swift */; };
+		0741F93D25F43A7500152966 /* ChangeDrinkerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0741F93C25F43A7500152966 /* ChangeDrinkerController.swift */; };
+		0741F94E25F43D8200152966 /* SlideInPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0741F94D25F43D8200152966 /* SlideInPresentationManager.swift */; };
+		076BF23C25EC7EDB00524CB8 /* Pour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BF23B25EC7EDB00524CB8 /* Pour.swift */; };
+		076BF24B25EEF71800524CB8 /* PourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BF24A25EEF71800524CB8 /* PourTableViewCell.swift */; };
+		076BF25525F077DD00524CB8 /* Drinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BF25425F077DD00524CB8 /* Drinker.swift */; };
 		07C3AD2825E9B121001F65F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C3AD2725E9B121001F65F0 /* AppDelegate.swift */; };
 		07C3AD2A25E9B121001F65F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C3AD2925E9B121001F65F0 /* SceneDelegate.swift */; };
-		07C3AD2C25E9B121001F65F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C3AD2B25E9B121001F65F0 /* ViewController.swift */; };
+		07C3AD2C25E9B121001F65F0 /* PoursViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C3AD2B25E9B121001F65F0 /* PoursViewController.swift */; };
 		07C3AD2F25E9B121001F65F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07C3AD2D25E9B121001F65F0 /* Main.storyboard */; };
 		07C3AD3225E9B121001F65F0 /* OtterKeg.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 07C3AD3025E9B121001F65F0 /* OtterKeg.xcdatamodeld */; };
 		07C3AD3425E9B122001F65F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07C3AD3325E9B122001F65F0 /* Assets.xcassets */; };
 		07C3AD3725E9B122001F65F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07C3AD3525E9B122001F65F0 /* LaunchScreen.storyboard */; };
+		07C3AD4025E9B18E001F65F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07C3AD3F25E9B18E001F65F0 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0741F93925F434A600152966 /* SlideInPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationController.swift; sourceTree = "<group>"; };
+		0741F93C25F43A7500152966 /* ChangeDrinkerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDrinkerController.swift; sourceTree = "<group>"; };
+		0741F94D25F43D8200152966 /* SlideInPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationManager.swift; sourceTree = "<group>"; };
+		076BF23B25EC7EDB00524CB8 /* Pour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pour.swift; sourceTree = "<group>"; };
+		076BF24A25EEF71800524CB8 /* PourTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PourTableViewCell.swift; sourceTree = "<group>"; };
+		076BF25425F077DD00524CB8 /* Drinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drinker.swift; sourceTree = "<group>"; };
 		07C3AD2425E9B121001F65F0 /* OtterKeg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OtterKeg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07C3AD2725E9B121001F65F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07C3AD2925E9B121001F65F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		07C3AD2B25E9B121001F65F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		07C3AD2B25E9B121001F65F0 /* PoursViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoursViewController.swift; sourceTree = "<group>"; };
 		07C3AD2E25E9B121001F65F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		07C3AD3125E9B121001F65F0 /* OtterKeg.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OtterKeg.xcdatamodel; sourceTree = "<group>"; };
 		07C3AD3325E9B122001F65F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07C3AD3625E9B122001F65F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07C3AD3825E9B122001F65F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07C3AD3F25E9B18E001F65F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3A9010A5FD298B91FDDBF645 /* Pods-OtterKeg.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OtterKeg.release.xcconfig"; path = "Target Support Files/Pods-OtterKeg/Pods-OtterKeg.release.xcconfig"; sourceTree = "<group>"; };
+		3B68793D97E6829FD245F6F9 /* Pods_OtterKeg.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OtterKeg.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		40E332DC3D0FEAB4F7F0E283 /* Pods-OtterKeg.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OtterKeg.debug.xcconfig"; path = "Target Support Files/Pods-OtterKeg/Pods-OtterKeg.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +51,49 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0381E46BDD3FE11351479D60 /* Pods_OtterKeg.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		076BF24D25F0777F00524CB8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				076BF23B25EC7EDB00524CB8 /* Pour.swift */,
+				076BF25425F077DD00524CB8 /* Drinker.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		076BF24E25F0778B00524CB8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				07C3AD2B25E9B121001F65F0 /* PoursViewController.swift */,
+				0741F94D25F43D8200152966 /* SlideInPresentationManager.swift */,
+				0741F93C25F43A7500152966 /* ChangeDrinkerController.swift */,
+				0741F93925F434A600152966 /* SlideInPresentationController.swift */,
+				076BF24F25F0779B00524CB8 /* TableViewCells */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		076BF24F25F0779B00524CB8 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				076BF24A25EEF71800524CB8 /* PourTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		07C3AD1B25E9B121001F65F0 = {
 			isa = PBXGroup;
 			children = (
 				07C3AD2625E9B121001F65F0 /* OtterKeg */,
 				07C3AD2525E9B121001F65F0 /* Products */,
+				5DBFE2554C8B2E359CC56D60 /* Pods */,
+				7ED18CBB4BF1E59FAD91FCC6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +108,35 @@
 		07C3AD2625E9B121001F65F0 /* OtterKeg */ = {
 			isa = PBXGroup;
 			children = (
+				076BF24D25F0777F00524CB8 /* Model */,
 				07C3AD2725E9B121001F65F0 /* AppDelegate.swift */,
+				076BF24E25F0778B00524CB8 /* Controllers */,
 				07C3AD2925E9B121001F65F0 /* SceneDelegate.swift */,
-				07C3AD2B25E9B121001F65F0 /* ViewController.swift */,
 				07C3AD2D25E9B121001F65F0 /* Main.storyboard */,
 				07C3AD3325E9B122001F65F0 /* Assets.xcassets */,
 				07C3AD3525E9B122001F65F0 /* LaunchScreen.storyboard */,
 				07C3AD3825E9B122001F65F0 /* Info.plist */,
 				07C3AD3025E9B121001F65F0 /* OtterKeg.xcdatamodeld */,
+				07C3AD3F25E9B18E001F65F0 /* GoogleService-Info.plist */,
 			);
 			path = OtterKeg;
+			sourceTree = "<group>";
+		};
+		5DBFE2554C8B2E359CC56D60 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				40E332DC3D0FEAB4F7F0E283 /* Pods-OtterKeg.debug.xcconfig */,
+				3A9010A5FD298B91FDDBF645 /* Pods-OtterKeg.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7ED18CBB4BF1E59FAD91FCC6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B68793D97E6829FD245F6F9 /* Pods_OtterKeg.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +146,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 07C3AD3B25E9B122001F65F0 /* Build configuration list for PBXNativeTarget "OtterKeg" */;
 			buildPhases = (
+				BEC1385B3BD0ADE683556B67 /* [CP] Check Pods Manifest.lock */,
 				07C3AD2025E9B121001F65F0 /* Sources */,
 				07C3AD2125E9B121001F65F0 /* Frameworks */,
 				07C3AD2225E9B121001F65F0 /* Resources */,
+				C6FA0F2CB7B56322EC4A780F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07C3AD3725E9B122001F65F0 /* LaunchScreen.storyboard in Resources */,
+				07C3AD4025E9B18E001F65F0 /* GoogleService-Info.plist in Resources */,
 				07C3AD3425E9B122001F65F0 /* Assets.xcassets in Resources */,
 				07C3AD2F25E9B121001F65F0 /* Main.storyboard in Resources */,
 			);
@@ -135,15 +207,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BEC1385B3BD0ADE683556B67 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OtterKeg-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6FA0F2CB7B56322EC4A780F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OtterKeg/Pods-OtterKeg-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OtterKeg/Pods-OtterKeg-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OtterKeg/Pods-OtterKeg-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		07C3AD2025E9B121001F65F0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07C3AD2C25E9B121001F65F0 /* ViewController.swift in Sources */,
+				0741F94E25F43D8200152966 /* SlideInPresentationManager.swift in Sources */,
+				07C3AD2C25E9B121001F65F0 /* PoursViewController.swift in Sources */,
+				0741F93A25F434A600152966 /* SlideInPresentationController.swift in Sources */,
 				07C3AD2825E9B121001F65F0 /* AppDelegate.swift in Sources */,
+				076BF25525F077DD00524CB8 /* Drinker.swift in Sources */,
+				0741F93D25F43A7500152966 /* ChangeDrinkerController.swift in Sources */,
 				07C3AD3225E9B121001F65F0 /* OtterKeg.xcdatamodeld in Sources */,
+				076BF24B25EEF71800524CB8 /* PourTableViewCell.swift in Sources */,
 				07C3AD2A25E9B121001F65F0 /* SceneDelegate.swift in Sources */,
+				076BF23C25EC7EDB00524CB8 /* Pour.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +407,7 @@
 		};
 		07C3AD3C25E9B122001F65F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 40E332DC3D0FEAB4F7F0E283 /* Pods-OtterKeg.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -306,6 +427,7 @@
 		};
 		07C3AD3D25E9B122001F65F0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A9010A5FD298B91FDDBF645 /* Pods-OtterKeg.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
