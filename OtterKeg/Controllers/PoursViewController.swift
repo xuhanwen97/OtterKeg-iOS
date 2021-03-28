@@ -87,21 +87,23 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? ChangeDrinkerController {
-            if segue.identifier == "ChangeDrinkerSegue" {
-                    
-                //TODO: Setup the delegate structure for the other controller
-//                controller.delegate = self
-//                controller.transitioningDelegate = slideInTransitioningDelegate
+        if segue.identifier == "ChangeDrinkerSegue" {
+            
+            if let controller = segue.destination as? ChangeDrinkerController {
                 slideInTransitioningDelegate.direction = .bottom
-
+                slideInTransitioningDelegate.disableCompactHeight = true
+                
                 controller.transitioningDelegate = slideInTransitioningDelegate
                 controller.modalPresentationStyle = .custom
+                controller.drinkers = Array(self.drinkers.values).sorted(by: { $0.name < $1.name })
             }
         }
     }
-    
-    
+}
+
+
+// TableViewController Functions
+extension PoursViewController {
     // Table View Controllers
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pours.count
@@ -141,34 +143,27 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return UISwipeActionsConfiguration(actions: [action])
 
     }
-    
+}
+
+
+// Table View Cell Action Handlers
+extension PoursViewController {
     
     //SECTION: TableViewCell swipe action handler
     private func handleDeleteAction(indexPath: IndexPath) {
         print("Row is: \(indexPath.row), pour info is: \(pours[indexPath.row])")
         
         // TODO: Fix removal animation
-//        pours.remove(at: indexPath.row)
-//        self.poursTableView.deleteRows(at: [indexPath], with: .automatic)
-
         poursRef.child(pours[indexPath.row].key).removeValue()
     }
     
     private func handleReassignAction(indexPath: IndexPath) {
         print(pours[indexPath.row])
         
-//        let presentationController = SlideInPresentationController(
-//            presentedViewController: presented,
-//            presenting: self,
-//            direction: .bottom
-//        )
-//        return presentationController
-        
+        performSegue(withIdentifier: "ChangeDrinkerSegue", sender: self)
     }
     
     private func reassignPour(pour: Pour, newDrinker: Drinker) {
-        
+        print("reassignPour called")
     }
-    
 }
-

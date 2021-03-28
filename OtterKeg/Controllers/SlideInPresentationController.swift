@@ -12,6 +12,8 @@ class SlideInPresentationController: UIPresentationController {
     // MARK: - Properties
     private var dimmingView: UIView!
     var direction: PresentationDirection
+    
+    private var bottomDisplayRatioSize = 1.0/3.0
 
     
     init(presentedViewController: UIViewController,
@@ -36,7 +38,8 @@ class SlideInPresentationController: UIPresentationController {
             case .right:
                 frame.origin.x = containerView!.frame.width*(1.0/3.0)
             case .bottom:
-                frame.origin.y = containerView!.frame.height*(1.0/3.0)
+                // Determines how far down from the top to DISPLAY the frame, not the frame size
+                frame.origin.y = containerView!.frame.height*CGFloat(1.0 - bottomDisplayRatioSize)
         default:
             frame.origin = .zero
         }
@@ -90,7 +93,8 @@ class SlideInPresentationController: UIPresentationController {
             case .left, .right:
                 return CGSize(width: parentSize.width*(2.0/3.0), height: parentSize.height)
             case .bottom, .top:
-                return CGSize(width: parentSize.width, height: parentSize.height*(2.0/3.0))
+                // Determines size of the DISPLAY frame
+                return CGSize(width: parentSize.width, height: parentSize.height*CGFloat(bottomDisplayRatioSize))
         }
     }
 }

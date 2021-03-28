@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -83,14 +84,30 @@
         <scene sceneID="eKz-eM-i2q">
             <objects>
                 <viewController id="TO7-Jz-wfI" customClass="ChangeDrinkerController" customModule="OtterKeg" customModuleProvider="target" sceneMemberID="viewController">
-                    <pickerView key="view" contentMode="scaleToFill" id="OcF-si-5NI">
+                    <view key="view" contentMode="scaleToFill" id="cD9-zp-NVm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                        <connections>
-                            <outlet property="dataSource" destination="TO7-Jz-wfI" id="9Ec-9z-hKa"/>
-                            <outlet property="delegate" destination="TO7-Jz-wfI" id="228-5F-sGT"/>
-                        </connections>
-                    </pickerView>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mVs-9H-DH2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="TO7-Jz-wfI" id="LdN-xh-Fhf"/>
+                                    <outlet property="delegate" destination="TO7-Jz-wfI" id="oU1-JL-VRF"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="s17-1h-ny5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="s17-1h-ny5" firstAttribute="bottom" secondItem="mVs-9H-DH2" secondAttribute="bottom" id="MpU-JO-ej7"/>
+                            <constraint firstItem="s17-1h-ny5" firstAttribute="trailing" secondItem="mVs-9H-DH2" secondAttribute="trailing" id="b0k-Nv-dH9"/>
+                            <constraint firstItem="mVs-9H-DH2" firstAttribute="leading" secondItem="s17-1h-ny5" secondAttribute="leading" id="hqw-wv-lUo"/>
+                            <constraint firstItem="mVs-9H-DH2" firstAttribute="top" secondItem="s17-1h-ny5" secondAttribute="top" id="oaW-WO-7mR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="DrinkerPicker" destination="mVs-9H-DH2" id="t3Z-yT-1i6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YvZ-Oh-OXu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
