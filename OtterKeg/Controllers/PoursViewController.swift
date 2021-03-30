@@ -18,6 +18,13 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var drinkers = [String: Drinker]()
     let drinkersRef = Database.database().reference(withPath: "drinkers")
     
+    var kegs = [String: Keg]()
+    let kegsRef = Database.database().reference(withPath: "kegs")
+    
+    var beers = [String: Beer]()
+    let beersRef = Database.database().reference(withPath: "beers")
+    
+    // RGB - 34/44/50, #202B34
     let otterKegBackground = UIColor(red: 0.13, green: 0.17, blue: 0.20, alpha: 1.00)
     
     lazy var slideInTransitioningDelegate = SlideInPresentationManager()
@@ -45,45 +52,8 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.poursTableView.separatorInset = .zero
         
         // Do any additional setup after loading the view.
-        
+        getKegsAndBeers()
         getDrinkers()
-    }
-    
-    func getDrinkers() {
-        drinkersRef.getData { (error, snapshot) in
-            //TODO: Add error check
-            var newItems = [String: Drinker]()
-            
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let drinker = Drinker(snapshot: snapshot) {
-                    newItems[drinker.key] = drinker
-                }
-            }
-            
-            self.drinkers = newItems
-            
-            self.refreshPoursData()
-        }
-    }
-    
-    func refreshPoursData() {
-//        poursRef.queryLimited(toLast: 20).observe(.value, with: { snapshot in
-        poursRef.observe(.value, with: { snapshot in
-            var newItems: [Pour] = []
-
-            for child in snapshot.children {
-                if let snapshot = child as? DataSnapshot,
-                   let pour = Pour(snapshot: snapshot) {
-                    newItems.append(pour)
-                }
-            }
-            
-            // Sort by newest -> latest
-            self.pours = newItems.sorted(by: { $0.lastUpdate > $1.lastUpdate} )
-            self.poursTableView.reloadData()
-            
-        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -114,7 +84,22 @@ extension PoursViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PourCell", for: indexPath) as! PourTableViewCell
         let pour = pours[indexPath.row]
         
-        cell.drinkerLabel.text = self.drinkers[pour.drinkerId]?.name
+        let drinkerName = String(self.drinkers[pour.drinkerId]?.name ?? "Unknown Drinker")
+        
+        if let keg = self.kegs[pour.kegId] {
+            if let beer = self.beers[keg.beerId] {
+                let kegBeerName = String(beer.nameDeprecated)
+                
+                cell.drinkerLabel.text = "\(drinkerName) - \(kegBeerName)"
+            }
+        } else {
+            let kegBeerName = "Unknown Beer"
+            
+            cell.drinkerLabel.text = "\(drinkerName) - \(kegBeerName)"
+            
+        }
+        
+        
         cell.amountLabel.text = String(pour.amount) + " L"
         
         //TODO: Convert timestamp into time
@@ -165,5 +150,76 @@ extension PoursViewController {
     
     private func reassignPour(pour: Pour, newDrinker: Drinker) {
         print("reassignPour called")
+    }
+}
+
+// Firebase data functions
+extension PoursViewController {
+    func getDrinkers() {
+        drinkersRef.getData { (error, snapshot) in
+            //TODO: Add error check
+            var newItems = [String: Drinker]()
+            
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                   let drinker = Drinker(snapshot: snapshot) {
+                    newItems[drinker.key] = drinker
+                }
+            }
+            
+            self.drinkers = newItems
+            
+            self.refreshPoursData()
+        }
+    }
+    
+    func getKegsAndBeers() {
+        kegsRef.getData { (error, snapshot) in
+            //TODO: Add error check
+            var newItems = [String: Keg]()
+            
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                   let keg = Keg(snapshot: snapshot) {
+                    newItems[keg.key] = keg
+                }
+            }
+            
+            self.kegs = newItems
+        }
+        
+        beersRef.getData { (error, snapshot) in
+            //TODO: Add error check
+            var newItems = [String: Beer]()
+            
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                   let beer = Beer(snapshot: snapshot) {
+                    newItems[beer.key] = beer
+                }
+            }
+            
+            self.beers = newItems
+        }
+    }
+
+    
+    func refreshPoursData() {
+//        poursRef.queryLimited(toLast: 20).observe(.value, with: { snapshot in
+        poursRef.observe(.value, with: { snapshot in
+            var newItems: [Pour] = []
+
+            for child in snapshot.children {
+                if let snapshot = child as? DataSnapshot,
+                   let pour = Pour(snapshot: snapshot) {
+                    newItems.append(pour)
+                }
+            }
+            
+            // Sort by newest -> latest
+            self.pours = newItems.sorted(by: { $0.lastUpdate > $1.lastUpdate} )
+            self.poursTableView.reloadData()
+            
+        })
     }
 }

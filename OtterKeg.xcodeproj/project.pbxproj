@@ -11,6 +11,8 @@
 		0741F93A25F434A600152966 /* SlideInPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0741F93925F434A600152966 /* SlideInPresentationController.swift */; };
 		0741F93D25F43A7500152966 /* ChangeDrinkerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0741F93C25F43A7500152966 /* ChangeDrinkerController.swift */; };
 		0741F94E25F43D8200152966 /* SlideInPresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0741F94D25F43D8200152966 /* SlideInPresentationManager.swift */; };
+		076BB6F92611256900B85D19 /* Keg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BB6F82611256900B85D19 /* Keg.swift */; };
+		076BB6FC2611278400B85D19 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BB6FB2611278400B85D19 /* Beer.swift */; };
 		076BF23C25EC7EDB00524CB8 /* Pour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BF23B25EC7EDB00524CB8 /* Pour.swift */; };
 		076BF24B25EEF71800524CB8 /* PourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BF24A25EEF71800524CB8 /* PourTableViewCell.swift */; };
 		076BF25525F077DD00524CB8 /* Drinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BF25425F077DD00524CB8 /* Drinker.swift */; };
@@ -28,6 +30,8 @@
 		0741F93925F434A600152966 /* SlideInPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationController.swift; sourceTree = "<group>"; };
 		0741F93C25F43A7500152966 /* ChangeDrinkerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDrinkerController.swift; sourceTree = "<group>"; };
 		0741F94D25F43D8200152966 /* SlideInPresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideInPresentationManager.swift; sourceTree = "<group>"; };
+		076BB6F82611256900B85D19 /* Keg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keg.swift; sourceTree = "<group>"; };
+		076BB6FB2611278400B85D19 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
 		076BF23B25EC7EDB00524CB8 /* Pour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pour.swift; sourceTree = "<group>"; };
 		076BF24A25EEF71800524CB8 /* PourTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PourTableViewCell.swift; sourceTree = "<group>"; };
 		076BF25425F077DD00524CB8 /* Drinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drinker.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 			children = (
 				076BF23B25EC7EDB00524CB8 /* Pour.swift */,
 				076BF25425F077DD00524CB8 /* Drinker.swift */,
+				076BB6F82611256900B85D19 /* Keg.swift */,
+				076BB6FB2611278400B85D19 /* Beer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -259,7 +265,9 @@
 				0741F93A25F434A600152966 /* SlideInPresentationController.swift in Sources */,
 				07C3AD2825E9B121001F65F0 /* AppDelegate.swift in Sources */,
 				076BF25525F077DD00524CB8 /* Drinker.swift in Sources */,
+				076BB6F92611256900B85D19 /* Keg.swift in Sources */,
 				0741F93D25F43A7500152966 /* ChangeDrinkerController.swift in Sources */,
+				076BB6FC2611278400B85D19 /* Beer.swift in Sources */,
 				07C3AD3225E9B121001F65F0 /* OtterKeg.xcdatamodeld in Sources */,
 				076BF24B25EEF71800524CB8 /* PourTableViewCell.swift in Sources */,
 				07C3AD2A25E9B121001F65F0 /* SceneDelegate.swift in Sources */,
