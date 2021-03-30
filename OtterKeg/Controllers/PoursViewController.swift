@@ -27,6 +27,9 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
     // RGB - 34/44/50, #202B34
     let otterKegBackground = UIColor(red: 0.13, green: 0.17, blue: 0.20, alpha: 1.00)
     
+    var selectedPour: Pour? = nil
+    var selectedDrinker: Drinker? = nil
+    
     lazy var slideInTransitioningDelegate = SlideInPresentationManager()
 
     
@@ -58,7 +61,6 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ChangeDrinkerSegue" {
-            
             if let controller = segue.destination as? ChangeDrinkerController {
                 slideInTransitioningDelegate.direction = .bottom
                 slideInTransitioningDelegate.disableCompactHeight = true
@@ -66,9 +68,18 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 controller.transitioningDelegate = slideInTransitioningDelegate
                 controller.modalPresentationStyle = .custom
                 controller.drinkers = Array(self.drinkers.values).sorted(by: { $0.name < $1.name })
+                
+                controller.originalSelectedPour = self.selectedPour
+                controller.originalSelectedDrinker = self.selectedDrinker
+                
+                // Clear the selected drinker after sending it over to the segue
+                
+                self.selectedPour = nil
+                self.selectedDrinker = nil
             }
         }
     }
+    
 }
 
 
@@ -142,8 +153,10 @@ extension PoursViewController {
     }
     
     private func handleReassignAction(indexPath: IndexPath) {
-        print(pours[indexPath.row])
+//        print(pours[indexPath.row])
         
+        self.selectedPour = self.pours[indexPath.row]
+        self.selectedDrinker = self.drinkers[pours[indexPath.row].drinkerId]
         performSegue(withIdentifier: "ChangeDrinkerSegue", sender: self)
     }
     

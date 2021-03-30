@@ -13,7 +13,7 @@ class SlideInPresentationController: UIPresentationController {
     private var dimmingView: UIView!
     var direction: PresentationDirection
     
-    private var bottomDisplayRatioSize = 1.0/3.0
+    private var bottomDisplayRatioSize = 1.5/3.0
 
     
     init(presentedViewController: UIViewController,

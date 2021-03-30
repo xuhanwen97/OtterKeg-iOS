@@ -88,36 +88,53 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="mVs-9H-DH2">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="747"/>
+                                <rect key="frame" x="0.0" y="24" width="414" height="736"/>
                                 <connections>
                                     <outlet property="dataSource" destination="TO7-Jz-wfI" id="LdN-xh-Fhf"/>
                                     <outlet property="delegate" destination="TO7-Jz-wfI" id="oU1-JL-VRF"/>
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuI-W7-7MU">
-                                <rect key="frame" x="8" y="755" width="398" height="45"/>
+                                <rect key="frame" x="8" y="760" width="398" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="4xO-li-4o3"/>
+                                    <constraint firstAttribute="height" constant="40" id="4xO-li-4o3"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="Change Drinker">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="ChangeDrinkerButtonPressed:" destination="TO7-Jz-wfI" eventType="touchUpInside" id="VfL-hm-5Jn"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Drinker: &lt;BLANK&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjt-sx-4lI" userLabel="Current Drinker Label">
+                                <rect key="frame" x="8" y="0.0" width="398" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="UBW-nL-Xdy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="s17-1h-ny5"/>
                         <color key="backgroundColor" red="0.12549019610000001" green="0.16862745100000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="QuI-W7-7MU" firstAttribute="top" secondItem="mVs-9H-DH2" secondAttribute="bottom" constant="8" id="CYM-94-VpP"/>
+                            <constraint firstItem="QuI-W7-7MU" firstAttribute="top" secondItem="mVs-9H-DH2" secondAttribute="bottom" id="CYM-94-VpP"/>
+                            <constraint firstItem="mVs-9H-DH2" firstAttribute="top" secondItem="cjt-sx-4lI" secondAttribute="bottom" constant="-16" id="NSn-pq-QM3"/>
+                            <constraint firstItem="s17-1h-ny5" firstAttribute="trailing" secondItem="cjt-sx-4lI" secondAttribute="trailing" constant="8" id="TIf-7M-6yd"/>
                             <constraint firstItem="s17-1h-ny5" firstAttribute="trailing" secondItem="QuI-W7-7MU" secondAttribute="trailing" constant="8" id="WGC-9E-BQf"/>
                             <constraint firstItem="s17-1h-ny5" firstAttribute="trailing" secondItem="mVs-9H-DH2" secondAttribute="trailing" id="b0k-Nv-dH9"/>
+                            <constraint firstItem="cjt-sx-4lI" firstAttribute="top" secondItem="s17-1h-ny5" secondAttribute="top" id="ggY-88-YhF"/>
                             <constraint firstItem="mVs-9H-DH2" firstAttribute="leading" secondItem="s17-1h-ny5" secondAttribute="leading" id="hqw-wv-lUo"/>
                             <constraint firstItem="QuI-W7-7MU" firstAttribute="leading" secondItem="s17-1h-ny5" secondAttribute="leading" constant="8" id="mlV-TI-gRK"/>
-                            <constraint firstItem="mVs-9H-DH2" firstAttribute="top" secondItem="s17-1h-ny5" secondAttribute="top" id="oaW-WO-7mR"/>
                             <constraint firstItem="s17-1h-ny5" firstAttribute="bottom" secondItem="QuI-W7-7MU" secondAttribute="bottom" constant="8" id="rOM-pQ-e2o"/>
+                            <constraint firstItem="cjt-sx-4lI" firstAttribute="leading" secondItem="s17-1h-ny5" secondAttribute="leading" constant="8" id="vCE-Xe-fZ7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="ChangeDrinkerButton" destination="QuI-W7-7MU" id="N3G-4J-n19"/>
+                        <outlet property="CurrentDrinkerLabel" destination="cjt-sx-4lI" id="m5O-xY-iuw"/>
                         <outlet property="DrinkerPicker" destination="mVs-9H-DH2" id="t3Z-yT-1i6"/>
                     </connections>
                 </viewController>
