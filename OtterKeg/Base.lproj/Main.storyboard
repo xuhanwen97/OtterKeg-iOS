@@ -87,24 +87,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mVs-9H-DH2">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                            <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="mVs-9H-DH2">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="747"/>
                                 <connections>
                                     <outlet property="dataSource" destination="TO7-Jz-wfI" id="LdN-xh-Fhf"/>
                                     <outlet property="delegate" destination="TO7-Jz-wfI" id="oU1-JL-VRF"/>
                                 </connections>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuI-W7-7MU">
+                                <rect key="frame" x="8" y="755" width="398" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="4xO-li-4o3"/>
+                                </constraints>
+                                <state key="normal" title="Change Drinker">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="s17-1h-ny5"/>
                         <color key="backgroundColor" red="0.12549019610000001" green="0.16862745100000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="s17-1h-ny5" firstAttribute="bottom" secondItem="mVs-9H-DH2" secondAttribute="bottom" id="MpU-JO-ej7"/>
+                            <constraint firstItem="QuI-W7-7MU" firstAttribute="top" secondItem="mVs-9H-DH2" secondAttribute="bottom" constant="8" id="CYM-94-VpP"/>
+                            <constraint firstItem="s17-1h-ny5" firstAttribute="trailing" secondItem="QuI-W7-7MU" secondAttribute="trailing" constant="8" id="WGC-9E-BQf"/>
                             <constraint firstItem="s17-1h-ny5" firstAttribute="trailing" secondItem="mVs-9H-DH2" secondAttribute="trailing" id="b0k-Nv-dH9"/>
                             <constraint firstItem="mVs-9H-DH2" firstAttribute="leading" secondItem="s17-1h-ny5" secondAttribute="leading" id="hqw-wv-lUo"/>
+                            <constraint firstItem="QuI-W7-7MU" firstAttribute="leading" secondItem="s17-1h-ny5" secondAttribute="leading" constant="8" id="mlV-TI-gRK"/>
                             <constraint firstItem="mVs-9H-DH2" firstAttribute="top" secondItem="s17-1h-ny5" secondAttribute="top" id="oaW-WO-7mR"/>
+                            <constraint firstItem="s17-1h-ny5" firstAttribute="bottom" secondItem="QuI-W7-7MU" secondAttribute="bottom" constant="8" id="rOM-pQ-e2o"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ChangeDrinkerButton" destination="QuI-W7-7MU" id="N3G-4J-n19"/>
                         <outlet property="DrinkerPicker" destination="mVs-9H-DH2" id="t3Z-yT-1i6"/>
                     </connections>
                 </viewController>

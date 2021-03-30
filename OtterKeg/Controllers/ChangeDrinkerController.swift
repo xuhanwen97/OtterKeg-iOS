@@ -10,8 +10,14 @@ import UIKit
 final class ChangeDrinkerController: UIViewController{
     
     @IBOutlet var DrinkerPicker: UIPickerView!
+    @IBOutlet weak var ChangeDrinkerButton: UIButton!
     
     var drinkers = [Drinker]()
+    
+    override func viewDidLoad() {
+        ChangeDrinkerButton.backgroundColor = UIColor.systemBlue
+        ChangeDrinkerButton.layer.cornerRadius = 5
+    }
     
 }
 

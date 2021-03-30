@@ -96,7 +96,6 @@ extension PoursViewController {
             let kegBeerName = "Unknown Beer"
             
             cell.drinkerLabel.text = "\(drinkerName) - \(kegBeerName)"
-            
         }
         
         
