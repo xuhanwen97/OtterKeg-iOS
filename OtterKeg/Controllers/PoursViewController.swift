@@ -49,7 +49,9 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
             navigationController?.navigationBar.prefersLargeTitles = true
             self.title = "OtterKeg Pours"
         }
-        
+                
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Kegs", style: .plain, target: self, action: #selector(kegsButtonTapped))
+
         self.poursTableView.showsVerticalScrollIndicator = false
         self.poursTableView.separatorColor = .lightGray
         self.poursTableView.separatorInset = .zero
@@ -67,8 +69,9 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 controller.transitioningDelegate = slideInTransitioningDelegate
                 controller.modalPresentationStyle = .custom
-                controller.drinkers = Array(self.drinkers.values).sorted(by: { $0.name < $1.name })
                 
+                
+                controller.drinkers = Array(self.drinkers.values).sorted(by: { $0.name < $1.name })
                 controller.originalSelectedPour = self.selectedPour
                 controller.originalSelectedDrinker = self.selectedDrinker
                 
@@ -77,9 +80,31 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.selectedPour = nil
                 self.selectedDrinker = nil
             }
+        } else if segue.identifier == "ManageKegsSegue" {
+            if let controller = segue.destination as? ManageKegController {
+                // Half screen segue code
+//                slideInTransitioningDelegate.direction = .bottom
+//                slideInTransitioningDelegate.disableCompactHeight = true
+//
+//                controller.transitioningDelegate = slideInTransitioningDelegate
+//                controller.modalPresentationStyle = .custom
+                
+                
+                // Handle any keg related data fetching?
+                
+            }
         }
     }
     
+}
+
+
+// Nav bar functions
+extension PoursViewController {
+    // Presents keg management page
+    @objc func kegsButtonTapped() {
+        performSegue(withIdentifier: "ManageKegsSegue", sender: self)
+    }
 }
 
 

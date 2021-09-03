@@ -16,6 +16,7 @@
 		076BF23C25EC7EDB00524CB8 /* Pour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BF23B25EC7EDB00524CB8 /* Pour.swift */; };
 		076BF24B25EEF71800524CB8 /* PourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BF24A25EEF71800524CB8 /* PourTableViewCell.swift */; };
 		076BF25525F077DD00524CB8 /* Drinker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076BF25425F077DD00524CB8 /* Drinker.swift */; };
+		07B2292926E2C2140041BC5D /* ManageKegController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B2292826E2C2140041BC5D /* ManageKegController.swift */; };
 		07C3AD2825E9B121001F65F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C3AD2725E9B121001F65F0 /* AppDelegate.swift */; };
 		07C3AD2A25E9B121001F65F0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C3AD2925E9B121001F65F0 /* SceneDelegate.swift */; };
 		07C3AD2C25E9B121001F65F0 /* PoursViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C3AD2B25E9B121001F65F0 /* PoursViewController.swift */; };
@@ -35,6 +36,7 @@
 		076BF23B25EC7EDB00524CB8 /* Pour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pour.swift; sourceTree = "<group>"; };
 		076BF24A25EEF71800524CB8 /* PourTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PourTableViewCell.swift; sourceTree = "<group>"; };
 		076BF25425F077DD00524CB8 /* Drinker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drinker.swift; sourceTree = "<group>"; };
+		07B2292826E2C2140041BC5D /* ManageKegController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageKegController.swift; sourceTree = "<group>"; };
 		07C3AD2425E9B121001F65F0 /* OtterKeg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OtterKeg.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07C3AD2725E9B121001F65F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07C3AD2925E9B121001F65F0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				07C3AD2B25E9B121001F65F0 /* PoursViewController.swift */,
 				0741F94D25F43D8200152966 /* SlideInPresentationManager.swift */,
 				0741F93C25F43A7500152966 /* ChangeDrinkerController.swift */,
+				07B2292826E2C2140041BC5D /* ManageKegController.swift */,
 				0741F93925F434A600152966 /* SlideInPresentationController.swift */,
 				076BF24F25F0779B00524CB8 /* TableViewCells */,
 			);
@@ -260,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07B2292926E2C2140041BC5D /* ManageKegController.swift in Sources */,
 				0741F94E25F43D8200152966 /* SlideInPresentationManager.swift in Sources */,
 				07C3AD2C25E9B121001F65F0 /* PoursViewController.swift in Sources */,
 				0741F93A25F434A600152966 /* SlideInPresentationController.swift in Sources */,
