@@ -89,9 +89,9 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
 //                controller.transitioningDelegate = slideInTransitioningDelegate
 //                controller.modalPresentationStyle = .custom
                 
-                
                 // Handle any keg related data fetching?
-                
+                controller.kegs = self.kegs
+                controller.beers = self.beers
             }
         }
     }

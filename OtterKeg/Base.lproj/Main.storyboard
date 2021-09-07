@@ -182,10 +182,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage Kegs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yk-qt-XNp" userLabel="Current Drinker Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage Kegs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yk-qt-XNp" userLabel="Title Label">
                                 <rect key="frame" x="8" y="0.0" width="398" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="hg8-E3-Xck"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="mZk-e6-Mo6" userLabel="Keg Picker View">
+                                <rect key="frame" x="0.0" y="96" width="414" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="meq-2F-USQ" id="EYS-q4-zFa"/>
+                                    <outlet property="delegate" destination="meq-2F-USQ" id="1Tq-C1-Sux"/>
+                                </connections>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="ZGJ-pf-PBb" userLabel="Beer Picker View">
+                                <rect key="frame" x="0.0" y="368" width="414" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="meq-2F-USQ" id="Qba-38-wu1"/>
+                                    <outlet property="delegate" destination="meq-2F-USQ" id="GmG-pD-5yB"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Beer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JB-hh-eQm" userLabel="Beer Picker Label">
+                                <rect key="frame" x="0.0" y="320" width="414" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="rzN-29-IK1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beer ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzo-mx-qYl" userLabel="Beer ID Label">
+                                <rect key="frame" x="0.0" y="592" width="414" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5K7-q8-oSa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u3b-vy-bpp">
+                                <rect key="frame" x="16" y="640" width="382" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVu-cn-R45" userLabel="Change Keg Button">
+                                <rect key="frame" x="0.0" y="682" width="414" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="lWa-eE-Dsu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <state key="normal" title="Change Drinker Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="ChangeDrinkerButtonPressed:" destination="TO7-Jz-wfI" eventType="touchUpInside" id="AfS-0b-kG8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Keg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4h-Ib-f9g" userLabel="Keg Picker Label">
+                                <rect key="frame" x="0.0" y="48" width="414" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="rbc-KZ-quf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -196,14 +255,44 @@
                         <color key="backgroundColor" red="0.12549019610000001" green="0.16862745100000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="6Yk-qt-XNp" firstAttribute="top" secondItem="RxX-0W-eKz" secondAttribute="top" id="277-fY-uk5"/>
+                            <constraint firstItem="ZGJ-pf-PBb" firstAttribute="top" secondItem="3JB-hh-eQm" secondAttribute="bottom" constant="8" id="4kf-fU-wae"/>
+                            <constraint firstItem="mZk-e6-Mo6" firstAttribute="trailing" secondItem="RxX-0W-eKz" secondAttribute="trailing" id="68K-Nv-pmI"/>
+                            <constraint firstItem="mZk-e6-Mo6" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" id="6aq-fl-sTK"/>
+                            <constraint firstItem="yVu-cn-R45" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" id="7tZ-1g-Eso"/>
+                            <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="tzo-mx-qYl" secondAttribute="trailing" id="Bpl-yx-WAR"/>
                             <constraint firstItem="6Yk-qt-XNp" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="8" id="DC0-Ib-z4Y"/>
+                            <constraint firstItem="tzo-mx-qYl" firstAttribute="top" secondItem="ZGJ-pf-PBb" secondAttribute="bottom" constant="8" id="GUv-gC-2q9"/>
+                            <constraint firstItem="tzo-mx-qYl" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" id="OCH-rg-3ZN"/>
+                            <constraint firstItem="ZGJ-pf-PBb" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" id="QL0-0G-ab1"/>
+                            <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="yVu-cn-R45" secondAttribute="trailing" id="QLY-l9-IC7"/>
+                            <constraint firstItem="yVu-cn-R45" firstAttribute="top" secondItem="u3b-vy-bpp" secondAttribute="bottom" constant="8" id="RAF-0U-KDE"/>
+                            <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="M4h-Ib-f9g" secondAttribute="trailing" id="SBe-XS-cg8"/>
+                            <constraint firstItem="ZGJ-pf-PBb" firstAttribute="trailing" secondItem="RxX-0W-eKz" secondAttribute="trailing" id="VNY-vt-gOW"/>
+                            <constraint firstItem="mZk-e6-Mo6" firstAttribute="top" secondItem="M4h-Ib-f9g" secondAttribute="bottom" constant="8" id="dI0-LR-XGM"/>
+                            <constraint firstItem="3JB-hh-eQm" firstAttribute="top" secondItem="mZk-e6-Mo6" secondAttribute="bottom" constant="8" id="h0N-59-jBQ"/>
+                            <constraint firstItem="u3b-vy-bpp" firstAttribute="top" secondItem="tzo-mx-qYl" secondAttribute="bottom" constant="8" id="jys-9S-66D"/>
+                            <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="u3b-vy-bpp" secondAttribute="trailing" constant="16" id="l1o-ii-c65"/>
+                            <constraint firstItem="M4h-Ib-f9g" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" id="msS-YL-9lR"/>
+                            <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="3JB-hh-eQm" secondAttribute="trailing" id="nHr-6O-oGy"/>
+                            <constraint firstItem="3JB-hh-eQm" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" id="noQ-FH-Twg"/>
+                            <constraint firstItem="M4h-Ib-f9g" firstAttribute="top" secondItem="6Yk-qt-XNp" secondAttribute="bottom" constant="8" id="oD7-3e-44n"/>
+                            <constraint firstItem="u3b-vy-bpp" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="16" id="pV4-dn-iJm"/>
                             <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="6Yk-qt-XNp" secondAttribute="trailing" constant="8" id="yrl-QM-Roy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="BeerIDLabel" destination="tzo-mx-qYl" id="qtb-He-KOK"/>
+                        <outlet property="BeerIdTextField" destination="u3b-vy-bpp" id="Ugh-EK-DYb"/>
+                        <outlet property="BeerPicker" destination="ZGJ-pf-PBb" id="TXB-Ck-10L"/>
+                        <outlet property="ChangeKegButton" destination="yVu-cn-R45" id="Usi-Is-AjZ"/>
+                        <outlet property="KegPicker" destination="mZk-e6-Mo6" id="QjO-tJ-aXW"/>
+                        <outlet property="WhichBeerLabel" destination="3JB-hh-eQm" id="amw-XT-iwF"/>
+                        <outlet property="WhichKegLabel" destination="M4h-Ib-f9g" id="fjq-8C-sb4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sjC-1E-jxd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1874" y="482"/>
+            <point key="canvasLocation" x="1873.913043478261" y="481.47321428571428"/>
         </scene>
     </scenes>
     <resources>
