@@ -47,7 +47,7 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
 
             navigationController?.navigationBar.prefersLargeTitles = true
-            self.title = "OtterKeg Pours"
+            self.title = "Pours"
         }
                 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Kegs", style: .plain, target: self, action: #selector(kegsButtonTapped))

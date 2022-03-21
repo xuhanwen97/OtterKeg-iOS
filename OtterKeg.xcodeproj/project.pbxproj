@@ -25,6 +25,7 @@
 		07C3AD3425E9B122001F65F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07C3AD3325E9B122001F65F0 /* Assets.xcassets */; };
 		07C3AD3725E9B122001F65F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07C3AD3525E9B122001F65F0 /* LaunchScreen.storyboard */; };
 		07C3AD4025E9B18E001F65F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07C3AD3F25E9B18E001F65F0 /* GoogleService-Info.plist */; };
+		07D9507E27E7F71B00F41947 /* OtterKegTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D9507D27E7F71B00F41947 /* OtterKegTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		07C3AD3625E9B122001F65F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07C3AD3825E9B122001F65F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07C3AD3F25E9B18E001F65F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		07D9507D27E7F71B00F41947 /* OtterKegTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtterKegTabBarController.swift; sourceTree = "<group>"; };
 		3A9010A5FD298B91FDDBF645 /* Pods-OtterKeg.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OtterKeg.release.xcconfig"; path = "Target Support Files/Pods-OtterKeg/Pods-OtterKeg.release.xcconfig"; sourceTree = "<group>"; };
 		3B68793D97E6829FD245F6F9 /* Pods_OtterKeg.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OtterKeg.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40E332DC3D0FEAB4F7F0E283 /* Pods-OtterKeg.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OtterKeg.debug.xcconfig"; path = "Target Support Files/Pods-OtterKeg/Pods-OtterKeg.debug.xcconfig"; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				0741F93C25F43A7500152966 /* ChangeDrinkerController.swift */,
 				07B2292826E2C2140041BC5D /* ManageKegController.swift */,
 				0741F93925F434A600152966 /* SlideInPresentationController.swift */,
+				07D9507D27E7F71B00F41947 /* OtterKegTabBarController.swift */,
 				076BF24F25F0779B00524CB8 /* TableViewCells */,
 			);
 			path = Controllers;
@@ -267,6 +270,7 @@
 				0741F94E25F43D8200152966 /* SlideInPresentationManager.swift in Sources */,
 				07C3AD2C25E9B121001F65F0 /* PoursViewController.swift in Sources */,
 				0741F93A25F434A600152966 /* SlideInPresentationController.swift in Sources */,
+				07D9507E27E7F71B00F41947 /* OtterKegTabBarController.swift in Sources */,
 				07C3AD2825E9B121001F65F0 /* AppDelegate.swift in Sources */,
 				076BF25525F077DD00524CB8 /* Drinker.swift in Sources */,
 				076BB6F92611256900B85D19 /* Keg.swift in Sources */,
