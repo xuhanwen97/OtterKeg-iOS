@@ -13,8 +13,15 @@ class OtterKegTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         self.delegate = self
-        self.tabBar.items?[1].title = "a"
+        
         self.tabBar.barTintColor = otterKegBackground
+        self.tabBar.tintColor = UIColor .white
+        self.tabBar.items?[0].title = "Pours"
+        self.tabBar.items?[0].image = UIImage .strokedCheckmark
+
+        self.tabBar.items?[1].title = "Kegs"
+        self.tabBar.items?[1].image = UIImage .strokedCheckmark
+
     }
 
 }

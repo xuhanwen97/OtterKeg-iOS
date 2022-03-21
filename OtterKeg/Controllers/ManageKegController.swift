@@ -19,15 +19,18 @@ final class ManageKegController: UIViewController{
     @IBOutlet weak var ChangeKegButton: UIButton!
 
     
+    @IBOutlet weak var manageKegsTitle: UILabel!
     var kegs = [String: Keg]()
     var beers = [String: Beer]()
     
     private var activeKegs = [String: Keg]()
     
     
+    
     override func viewDidLoad() {
         activeKegs = kegs.filter( {$0.value.isActive} )
         print(activeKegs)
+        manageKegsTitle.text = "Kegs"
     }
 
 }

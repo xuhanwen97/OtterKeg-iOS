@@ -32,9 +32,13 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     lazy var slideInTransitioningDelegate = SlideInPresentationManager()
 
+    override func viewWillAppear(_ animated: Bool) {
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Pours"
         
         if #available(iOS 13.0, *) {
             let navBarAppearance = UINavigationBarAppearance()
@@ -47,7 +51,6 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
 
             navigationController?.navigationBar.prefersLargeTitles = true
-            self.title = "Pours"
         }
                 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Kegs", style: .plain, target: self, action: #selector(kegsButtonTapped))
@@ -55,7 +58,8 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.poursTableView.showsVerticalScrollIndicator = false
         self.poursTableView.separatorColor = .lightGray
         self.poursTableView.separatorInset = .zero
-        
+        self.poursTableView.backgroundColor = otterKegBackground
+    
         // Do any additional setup after loading the view.
         getKegsAndBeers()
         getDrinkers()

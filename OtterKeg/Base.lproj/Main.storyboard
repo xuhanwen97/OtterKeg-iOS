@@ -143,10 +143,10 @@
             </objects>
             <point key="canvasLocation" x="2784.057971014493" y="-256.47321428571428"/>
         </scene>
-        <!--Item-->
+        <!--Pours-->
         <scene sceneID="ftj-d4-BHt">
             <objects>
-                <navigationController id="b3d-n3-z6T" sceneMemberID="viewController">
+                <navigationController title="Pours" id="b3d-n3-z6T" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <tabBarItem key="tabBarItem" title="Item" id="Jh8-lE-uSF"/>
                     <toolbarItems/>
@@ -178,12 +178,12 @@
         <!--Manage Keg Controller-->
         <scene sceneID="9dN-m1-47W">
             <objects>
-                <viewController id="meq-2F-USQ" userLabel="Manage Keg Controller" customClass="ManageKegController" customModule="OtterKeg" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Kegs" id="meq-2F-USQ" userLabel="Manage Keg Controller" customClass="ManageKegController" customModule="OtterKeg" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6VZ-gj-ekq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Manage Kegs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yk-qt-XNp" userLabel="Title Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yk-qt-XNp" userLabel="Title Label">
                                 <rect key="frame" x="8" y="44" width="398" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="hg8-E3-Xck"/>
@@ -290,6 +290,7 @@
                         <outlet property="KegPicker" destination="mZk-e6-Mo6" id="QjO-tJ-aXW"/>
                         <outlet property="WhichBeerLabel" destination="3JB-hh-eQm" id="amw-XT-iwF"/>
                         <outlet property="WhichKegLabel" destination="M4h-Ib-f9g" id="fjq-8C-sb4"/>
+                        <outlet property="manageKegsTitle" destination="6Yk-qt-XNp" id="tyw-g7-KP7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sjC-1E-jxd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
