@@ -25,6 +25,7 @@
 		07C3AD3425E9B122001F65F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07C3AD3325E9B122001F65F0 /* Assets.xcassets */; };
 		07C3AD3725E9B122001F65F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07C3AD3525E9B122001F65F0 /* LaunchScreen.storyboard */; };
 		07C3AD4025E9B18E001F65F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07C3AD3F25E9B18E001F65F0 /* GoogleService-Info.plist */; };
+		07CBE3BB27EFF926001D56E5 /* OtterKegFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBE3BA27EFF926001D56E5 /* OtterKegFirebase.swift */; };
 		07D9507E27E7F71B00F41947 /* OtterKegTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D9507D27E7F71B00F41947 /* OtterKegTabBarController.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		07C3AD3625E9B122001F65F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07C3AD3825E9B122001F65F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07C3AD3F25E9B18E001F65F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		07CBE3BA27EFF926001D56E5 /* OtterKegFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtterKegFirebase.swift; sourceTree = "<group>"; };
 		07D9507D27E7F71B00F41947 /* OtterKegTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtterKegTabBarController.swift; sourceTree = "<group>"; };
 		3A9010A5FD298B91FDDBF645 /* Pods-OtterKeg.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OtterKeg.release.xcconfig"; path = "Target Support Files/Pods-OtterKeg/Pods-OtterKeg.release.xcconfig"; sourceTree = "<group>"; };
 		3B68793D97E6829FD245F6F9 /* Pods_OtterKeg.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OtterKeg.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,11 +83,10 @@
 			isa = PBXGroup;
 			children = (
 				07C3AD2B25E9B121001F65F0 /* PoursViewController.swift */,
-				0741F94D25F43D8200152966 /* SlideInPresentationManager.swift */,
 				0741F93C25F43A7500152966 /* ChangeDrinkerController.swift */,
 				07B2292826E2C2140041BC5D /* ManageKegController.swift */,
-				0741F93925F434A600152966 /* SlideInPresentationController.swift */,
 				07D9507D27E7F71B00F41947 /* OtterKegTabBarController.swift */,
+				07CBE3B627EFF8D3001D56E5 /* SlideInController */,
 				076BF24F25F0779B00524CB8 /* TableViewCells */,
 			);
 			path = Controllers;
@@ -122,6 +123,7 @@
 			children = (
 				076BF24D25F0777F00524CB8 /* Model */,
 				07C3AD2725E9B121001F65F0 /* AppDelegate.swift */,
+				07CBE3B727EFF8EA001D56E5 /* Data */,
 				076BF24E25F0778B00524CB8 /* Controllers */,
 				07C3AD2925E9B121001F65F0 /* SceneDelegate.swift */,
 				07C3AD2D25E9B121001F65F0 /* Main.storyboard */,
@@ -132,6 +134,23 @@
 				07C3AD3F25E9B18E001F65F0 /* GoogleService-Info.plist */,
 			);
 			path = OtterKeg;
+			sourceTree = "<group>";
+		};
+		07CBE3B627EFF8D3001D56E5 /* SlideInController */ = {
+			isa = PBXGroup;
+			children = (
+				0741F94D25F43D8200152966 /* SlideInPresentationManager.swift */,
+				0741F93925F434A600152966 /* SlideInPresentationController.swift */,
+			);
+			path = SlideInController;
+			sourceTree = "<group>";
+		};
+		07CBE3B727EFF8EA001D56E5 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				07CBE3BA27EFF926001D56E5 /* OtterKegFirebase.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		5DBFE2554C8B2E359CC56D60 /* Pods */ = {
@@ -269,6 +288,7 @@
 				07B2292926E2C2140041BC5D /* ManageKegController.swift in Sources */,
 				0741F94E25F43D8200152966 /* SlideInPresentationManager.swift in Sources */,
 				07C3AD2C25E9B121001F65F0 /* PoursViewController.swift in Sources */,
+				07CBE3BB27EFF926001D56E5 /* OtterKegFirebase.swift in Sources */,
 				0741F93A25F434A600152966 /* SlideInPresentationController.swift in Sources */,
 				07D9507E27E7F71B00F41947 /* OtterKegTabBarController.swift in Sources */,
 				07C3AD2825E9B121001F65F0 /* AppDelegate.swift in Sources */,
