@@ -141,6 +141,7 @@ extension ManageKegController {
     }
     
     func setBeerIDLabel(forBeer beer: Beer) {
+        beerIdTextField.textColor = .black
         beerIdTextField.text = String(format: "%.0f", beer.untappedBid)
     }
 }
