@@ -53,16 +53,13 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
             navigationController?.navigationBar.prefersLargeTitles = true
         }
                 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Kegs", style: .plain, target: self, action: #selector(kegsButtonTapped))
-
         self.poursTableView.showsVerticalScrollIndicator = false
         self.poursTableView.separatorColor = .lightGray
         self.poursTableView.separatorInset = .zero
         self.poursTableView.backgroundColor = otterKegBackground
     
         // Do any additional setup after loading the view.
-        getKegsAndBeers()
-        getDrinkers()
+        getAllData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -103,13 +100,6 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
 }
 
 
-// Nav bar functions
-extension PoursViewController {
-    // Presents keg management page
-    @objc func kegsButtonTapped() {
-        performSegue(withIdentifier: "ManageKegsSegue", sender: self)
-    }
-}
 
 
 // TableViewController Functions
@@ -126,18 +116,15 @@ extension PoursViewController {
         
         let drinkerName = String(self.drinkers[pour.drinkerId]?.name ?? "Unknown Drinker")
         
+        var beerInPourName = "Unknown Beer"
+        
         if let keg = self.kegs[pour.kegId] {
             if let beer = self.beers[keg.beerId] {
-                let kegBeerName = String(beer.nameDeprecated)
-                
-                cell.drinkerLabel.text = "\(drinkerName) - \(kegBeerName)"
+                beerInPourName = String(beer.nameDeprecated)
             }
-        } else {
-            let kegBeerName = "Unknown Beer"
-            
-            cell.drinkerLabel.text = "\(drinkerName) - \(kegBeerName)"
         }
         
+        cell.drinkerLabel.text = "\(drinkerName) - \(beerInPourName)"
         
         cell.amountLabel.text = String(pour.amount) + " L"
         
@@ -196,6 +183,11 @@ extension PoursViewController {
 
 // Firebase data functions
 extension PoursViewController {
+    func getAllData() {
+        getDrinkers()
+        getKegsAndBeers()
+    }
+    
     func getDrinkers() {
         drinkersRef.getData { (error, snapshot) in
             //TODO: Add error check
