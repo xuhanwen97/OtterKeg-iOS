@@ -238,7 +238,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVu-cn-R45" userLabel="Change Keg Button">
-                                <rect key="frame" x="8" y="765" width="398" height="40"/>
+                                <rect key="frame" x="8" y="757" width="398" height="40"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="lWa-eE-Dsu"/>
@@ -281,7 +281,7 @@
                             <constraint firstItem="tzo-mx-qYl" firstAttribute="top" secondItem="mZk-e6-Mo6" secondAttribute="bottom" constant="16" id="ii8-z3-3LE"/>
                             <constraint firstItem="u3b-vy-bpp" firstAttribute="top" secondItem="tzo-mx-qYl" secondAttribute="bottom" constant="8" id="jys-9S-66D"/>
                             <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="u3b-vy-bpp" secondAttribute="trailing" constant="16" id="l1o-ii-c65"/>
-                            <constraint firstItem="RxX-0W-eKz" firstAttribute="bottom" secondItem="yVu-cn-R45" secondAttribute="bottom" constant="8" id="lzp-Kl-y98"/>
+                            <constraint firstItem="RxX-0W-eKz" firstAttribute="bottom" secondItem="yVu-cn-R45" secondAttribute="bottom" constant="16" id="lzp-Kl-y98"/>
                             <constraint firstItem="M4h-Ib-f9g" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="24" id="msS-YL-9lR"/>
                             <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="3JB-hh-eQm" secondAttribute="trailing" id="nHr-6O-oGy"/>
                             <constraint firstItem="3JB-hh-eQm" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="24" id="noQ-FH-Twg"/>
