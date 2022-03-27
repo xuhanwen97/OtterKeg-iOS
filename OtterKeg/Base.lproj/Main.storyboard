@@ -97,6 +97,7 @@
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuI-W7-7MU">
                                 <rect key="frame" x="8" y="794" width="398" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="4xO-li-4o3"/>
                                 </constraints>
@@ -192,22 +193,25 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="mZk-e6-Mo6" userLabel="Keg Picker View">
-                                <rect key="frame" x="0.0" y="140" width="414" height="216"/>
+                            <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="mZk-e6-Mo6" userLabel="Keg Picker View">
+                                <rect key="frame" x="8" y="132" width="398" height="96"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="96" id="Q40-Zg-2cb"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="meq-2F-USQ" id="EYS-q4-zFa"/>
                                     <outlet property="delegate" destination="meq-2F-USQ" id="1Tq-C1-Sux"/>
                                 </connections>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="ZGJ-pf-PBb" userLabel="Beer Picker View">
-                                <rect key="frame" x="0.0" y="412" width="414" height="216"/>
+                                <rect key="frame" x="8" y="388" width="398" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="meq-2F-USQ" id="Qba-38-wu1"/>
                                     <outlet property="delegate" destination="meq-2F-USQ" id="GmG-pD-5yB"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Beer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JB-hh-eQm" userLabel="Beer Picker Label">
-                                <rect key="frame" x="0.0" y="364" width="414" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Past Beers (select for ID)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JB-hh-eQm" userLabel="Beer Picker Label">
+                                <rect key="frame" x="24" y="348" width="390" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rzN-29-IK1"/>
                                 </constraints>
@@ -215,8 +219,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beer ID" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzo-mx-qYl" userLabel="Beer ID Label">
-                                <rect key="frame" x="0.0" y="636" width="414" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Untappd Beer ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzo-mx-qYl" userLabel="Beer ID Label">
+                                <rect key="frame" x="24" y="244" width="390" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5K7-q8-oSa"/>
                                 </constraints>
@@ -225,25 +229,29 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u3b-vy-bpp">
-                                <rect key="frame" x="16" y="684" width="382" height="34"/>
+                                <rect key="frame" x="16" y="292" width="382" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Q2W-RK-8Yz"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVu-cn-R45" userLabel="Change Keg Button">
-                                <rect key="frame" x="0.0" y="726" width="414" height="40"/>
+                                <rect key="frame" x="8" y="765" width="398" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="lWa-eE-Dsu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <state key="normal" title="Change Drinker Button">
+                                <state key="normal" title="Change Keg Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="ChangeDrinkerButtonPressed:" destination="TO7-Jz-wfI" eventType="touchUpInside" id="AfS-0b-kG8"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Keg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4h-Ib-f9g" userLabel="Keg Picker Label">
-                                <rect key="frame" x="0.0" y="92" width="414" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Keg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4h-Ib-f9g" userLabel="Keg Picker Label">
+                                <rect key="frame" x="24" y="92" width="390" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rbc-KZ-quf"/>
                                 </constraints>
@@ -256,26 +264,26 @@
                         <color key="backgroundColor" red="0.12549019610000001" green="0.16862745100000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="6Yk-qt-XNp" firstAttribute="top" secondItem="RxX-0W-eKz" secondAttribute="top" id="277-fY-uk5"/>
-                            <constraint firstItem="ZGJ-pf-PBb" firstAttribute="top" secondItem="3JB-hh-eQm" secondAttribute="bottom" constant="8" id="4kf-fU-wae"/>
-                            <constraint firstItem="mZk-e6-Mo6" firstAttribute="trailing" secondItem="RxX-0W-eKz" secondAttribute="trailing" id="68K-Nv-pmI"/>
-                            <constraint firstItem="mZk-e6-Mo6" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" id="6aq-fl-sTK"/>
-                            <constraint firstItem="yVu-cn-R45" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" id="7tZ-1g-Eso"/>
+                            <constraint firstItem="ZGJ-pf-PBb" firstAttribute="top" secondItem="3JB-hh-eQm" secondAttribute="bottom" id="4kf-fU-wae"/>
+                            <constraint firstItem="mZk-e6-Mo6" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="8" id="6aq-fl-sTK"/>
+                            <constraint firstItem="yVu-cn-R45" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="8" id="7tZ-1g-Eso"/>
                             <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="tzo-mx-qYl" secondAttribute="trailing" id="Bpl-yx-WAR"/>
                             <constraint firstItem="6Yk-qt-XNp" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="8" id="DC0-Ib-z4Y"/>
-                            <constraint firstItem="tzo-mx-qYl" firstAttribute="top" secondItem="ZGJ-pf-PBb" secondAttribute="bottom" constant="8" id="GUv-gC-2q9"/>
-                            <constraint firstItem="tzo-mx-qYl" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" id="OCH-rg-3ZN"/>
-                            <constraint firstItem="ZGJ-pf-PBb" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" id="QL0-0G-ab1"/>
-                            <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="yVu-cn-R45" secondAttribute="trailing" id="QLY-l9-IC7"/>
-                            <constraint firstItem="yVu-cn-R45" firstAttribute="top" secondItem="u3b-vy-bpp" secondAttribute="bottom" constant="8" id="RAF-0U-KDE"/>
+                            <constraint firstItem="tzo-mx-qYl" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="24" id="OCH-rg-3ZN"/>
+                            <constraint firstItem="ZGJ-pf-PBb" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="8" id="QL0-0G-ab1"/>
+                            <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="yVu-cn-R45" secondAttribute="trailing" constant="8" id="QLY-l9-IC7"/>
                             <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="M4h-Ib-f9g" secondAttribute="trailing" id="SBe-XS-cg8"/>
-                            <constraint firstItem="ZGJ-pf-PBb" firstAttribute="trailing" secondItem="RxX-0W-eKz" secondAttribute="trailing" id="VNY-vt-gOW"/>
-                            <constraint firstItem="mZk-e6-Mo6" firstAttribute="top" secondItem="M4h-Ib-f9g" secondAttribute="bottom" constant="8" id="dI0-LR-XGM"/>
-                            <constraint firstItem="3JB-hh-eQm" firstAttribute="top" secondItem="mZk-e6-Mo6" secondAttribute="bottom" constant="8" id="h0N-59-jBQ"/>
+                            <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="mZk-e6-Mo6" secondAttribute="trailing" constant="8" id="bZ3-CF-kz9"/>
+                            <constraint firstItem="mZk-e6-Mo6" firstAttribute="top" secondItem="M4h-Ib-f9g" secondAttribute="bottom" id="dI0-LR-XGM"/>
+                            <constraint firstItem="3JB-hh-eQm" firstAttribute="top" secondItem="u3b-vy-bpp" secondAttribute="bottom" constant="16" id="gTX-bs-vA7"/>
+                            <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="ZGJ-pf-PBb" secondAttribute="trailing" constant="8" id="hZf-iM-Xuw"/>
+                            <constraint firstItem="tzo-mx-qYl" firstAttribute="top" secondItem="mZk-e6-Mo6" secondAttribute="bottom" constant="16" id="ii8-z3-3LE"/>
                             <constraint firstItem="u3b-vy-bpp" firstAttribute="top" secondItem="tzo-mx-qYl" secondAttribute="bottom" constant="8" id="jys-9S-66D"/>
                             <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="u3b-vy-bpp" secondAttribute="trailing" constant="16" id="l1o-ii-c65"/>
-                            <constraint firstItem="M4h-Ib-f9g" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" id="msS-YL-9lR"/>
+                            <constraint firstItem="RxX-0W-eKz" firstAttribute="bottom" secondItem="yVu-cn-R45" secondAttribute="bottom" constant="8" id="lzp-Kl-y98"/>
+                            <constraint firstItem="M4h-Ib-f9g" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="24" id="msS-YL-9lR"/>
                             <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="3JB-hh-eQm" secondAttribute="trailing" id="nHr-6O-oGy"/>
-                            <constraint firstItem="3JB-hh-eQm" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" id="noQ-FH-Twg"/>
+                            <constraint firstItem="3JB-hh-eQm" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="24" id="noQ-FH-Twg"/>
                             <constraint firstItem="M4h-Ib-f9g" firstAttribute="top" secondItem="6Yk-qt-XNp" secondAttribute="bottom" constant="8" id="oD7-3e-44n"/>
                             <constraint firstItem="u3b-vy-bpp" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="16" id="pV4-dn-iJm"/>
                             <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="6Yk-qt-XNp" secondAttribute="trailing" constant="8" id="yrl-QM-Roy"/>
@@ -320,6 +328,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

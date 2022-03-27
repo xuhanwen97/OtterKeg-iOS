@@ -55,8 +55,9 @@ extension ChangeDrinkerController: UIPickerViewDelegate, UIPickerViewDataSource 
         return drinkers.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return drinkers[row].name
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: drinkers[row].name, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -68,7 +69,11 @@ extension ChangeDrinkerController: UIPickerViewDelegate, UIPickerViewDataSource 
             enableChangeDrinkerButton()
         }
     }
-    
+
+}
+
+// Change drinker helper function
+extension ChangeDrinkerController {
     func updateDrinkerForPour() {
         guard let pour = originalSelectedPour else { print("Error: There should always be an original selected pour"); return; }
         guard let newDrinker = selectedDrinker else { print("Error: There should always be a newly selected drinker"); return; }
@@ -87,6 +92,7 @@ extension ChangeDrinkerController: UIPickerViewDelegate, UIPickerViewDataSource 
         
     }
 }
+
 
 // UI elements helper functions
 extension ChangeDrinkerController {

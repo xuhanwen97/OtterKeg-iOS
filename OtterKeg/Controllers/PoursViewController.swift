@@ -81,19 +81,6 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.selectedPour = nil
                 self.selectedDrinker = nil
             }
-        } else if segue.identifier == "ManageKegsSegue" {
-            if let controller = segue.destination as? ManageKegController {
-                // Half screen segue code
-//                slideInTransitioningDelegate.direction = .bottom
-//                slideInTransitioningDelegate.disableCompactHeight = true
-//
-//                controller.transitioningDelegate = slideInTransitioningDelegate
-//                controller.modalPresentationStyle = .custom
-                
-                // Handle any keg related data fetching?
-                controller.kegs = self.kegs
-                controller.beers = self.beers
-            }
         }
     }
     
