@@ -135,9 +135,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="ChangeDrinkerButton" destination="QuI-W7-7MU" id="N3G-4J-n19"/>
-                        <outlet property="CurrentDrinkerLabel" destination="cjt-sx-4lI" id="m5O-xY-iuw"/>
-                        <outlet property="DrinkerPicker" destination="mVs-9H-DH2" id="t3Z-yT-1i6"/>
+                        <outlet property="changeDrinkerButton" destination="QuI-W7-7MU" id="N3G-4J-n19"/>
+                        <outlet property="currentDrinkerLabel" destination="cjt-sx-4lI" id="m5O-xY-iuw"/>
+                        <outlet property="drinkerPickerView" destination="mVs-9H-DH2" id="t3Z-yT-1i6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YvZ-Oh-OXu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -291,14 +291,14 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="HHN-f9-Kb4"/>
                     <connections>
-                        <outlet property="BeerIDLabel" destination="tzo-mx-qYl" id="qtb-He-KOK"/>
-                        <outlet property="BeerIdTextField" destination="u3b-vy-bpp" id="Ugh-EK-DYb"/>
-                        <outlet property="BeerPicker" destination="ZGJ-pf-PBb" id="TXB-Ck-10L"/>
-                        <outlet property="ChangeKegButton" destination="yVu-cn-R45" id="Usi-Is-AjZ"/>
-                        <outlet property="KegPicker" destination="mZk-e6-Mo6" id="QjO-tJ-aXW"/>
-                        <outlet property="WhichBeerLabel" destination="3JB-hh-eQm" id="amw-XT-iwF"/>
-                        <outlet property="WhichKegLabel" destination="M4h-Ib-f9g" id="fjq-8C-sb4"/>
+                        <outlet property="beerIDLabel" destination="tzo-mx-qYl" id="qtb-He-KOK"/>
+                        <outlet property="beerIdTextField" destination="u3b-vy-bpp" id="Ugh-EK-DYb"/>
+                        <outlet property="beerPickerView" destination="ZGJ-pf-PBb" id="TXB-Ck-10L"/>
+                        <outlet property="changeKegButton" destination="yVu-cn-R45" id="Usi-Is-AjZ"/>
+                        <outlet property="kegPickerView" destination="mZk-e6-Mo6" id="QjO-tJ-aXW"/>
                         <outlet property="manageKegsTitle" destination="6Yk-qt-XNp" id="tyw-g7-KP7"/>
+                        <outlet property="whichBeerLabel" destination="3JB-hh-eQm" id="amw-XT-iwF"/>
+                        <outlet property="whichKegLabel" destination="M4h-Ib-f9g" id="fjq-8C-sb4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sjC-1E-jxd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

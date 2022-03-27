@@ -10,35 +10,44 @@ import Firebase
 
 final class ManageKegController: UIViewController{
     
-    @IBOutlet weak var WhichKegLabel: UILabel!
-    @IBOutlet weak var KegPicker: UIPickerView!
+    @IBOutlet weak var whichKegLabel: UILabel!
+    @IBOutlet weak var kegPickerView: UIPickerView!
     
-    @IBOutlet weak var WhichBeerLabel: UILabel!
-    @IBOutlet weak var BeerPicker: UIPickerView!
-    @IBOutlet weak var BeerIDLabel: UILabel!
-    @IBOutlet weak var BeerIdTextField: UITextField!
+    @IBOutlet weak var whichBeerLabel: UILabel!
+    @IBOutlet weak var beerPickerView: UIPickerView!
+    @IBOutlet weak var beerIDLabel: UILabel!
+    @IBOutlet weak var beerIdTextField: UITextField!
     
-    @IBOutlet weak var ChangeKegButton: UIButton!
+    @IBOutlet weak var changeKegButton: UIButton!
 
     
     @IBOutlet weak var manageKegsTitle: UILabel!
     
     var kegsArray = [Keg]()
+    private var activeKegsArray = [Keg]()
+
     var beersDict = [String: Beer]()
     var beersArray = [Beer]()
-    private var activeKegsArray = [Keg]()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //UI Setup
         manageKegsTitle.text = "Kegs"
         setupChangeKegButton()
         
+        //Data Setup
+        setupData()
+    }
+    
+    func setupData() {
         OtterKegFirebase.sharedFirebase.getBeers(onError: nil, onCompletion: { beers in
             self.beersDict = beers
             self.beersArray = Array(beers.values.map{$0})
             self.beersArray = self.beersArray.sorted(by: {$0.nameDeprecated < $1.nameDeprecated} )
             DispatchQueue.main.async {
-                self.KegPicker.reloadAllComponents()
-                self.BeerPicker.reloadAllComponents()
+                self.kegPickerView.reloadAllComponents()
+                self.beerPickerView.reloadAllComponents()
                 self.setBeerIDLabel(forBeer: self.beersArray[0])
             }
         })
@@ -48,7 +57,7 @@ final class ManageKegController: UIViewController{
             self.kegsArray = self.kegsArray.sorted(by: {$0.position < $1.position} )
             self.activeKegsArray = self.kegsArray.filter( {$0.isActive} )
             DispatchQueue.main.async {
-                self.KegPicker.reloadAllComponents()
+                self.kegPickerView.reloadAllComponents()
             }
         })
     }
@@ -59,9 +68,9 @@ extension ManageKegController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         var numComps = 1
         
-        if pickerView == KegPicker {
+        if pickerView == kegPickerView {
             numComps = 1
-        } else if pickerView == BeerPicker {
+        } else if pickerView == beerPickerView {
             numComps = 1
         }
         
@@ -71,9 +80,9 @@ extension ManageKegController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         var numRows = 0
         
-        if pickerView == KegPicker {
+        if pickerView == kegPickerView {
             numRows = self.activeKegsArray.count
-        } else if pickerView == BeerPicker {
+        } else if pickerView == beerPickerView {
             numRows = self.beersArray.count
         }
         
@@ -83,10 +92,10 @@ extension ManageKegController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         var rowName = "uhhhh"
 
-        if pickerView == KegPicker {
+        if pickerView == kegPickerView {
             let keg = self.activeKegsArray[row]
             rowName = String(format:"%@ - %@", keg.position, self.beersDict[keg.beerId]?.nameDeprecated ?? "Unknown Beer")
-        } else if pickerView == BeerPicker {
+        } else if pickerView == beerPickerView {
             let beer = self.beersArray[row]
             rowName = String(format:"%@ - %@", beer.nameDeprecated, String(format: "%.0f", beer.untappedBid))
             
@@ -97,11 +106,11 @@ extension ManageKegController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == KegPicker {
+        if pickerView == kegPickerView {
             let keg = activeKegsArray[row]
             let rowName = String(format:"%@ - %@", keg.position, self.beersDict[keg.beerId]?.nameDeprecated ?? "Unknown Beer")
             print("Keg \"\(rowName)\" selected")
-        } else if pickerView == BeerPicker {
+        } else if pickerView == beerPickerView {
             let beer = beersArray[row]
             let rowName = String(format:"%@ - %@", beer.nameDeprecated, String(format: "%.0f", beer.untappedBid))
             setBeerIDLabel(forBeer: beer)
@@ -115,24 +124,24 @@ extension ManageKegController: UIPickerViewDelegate, UIPickerViewDataSource {
 // UI elements helper functions
 extension ManageKegController {
     func setupChangeKegButton() {
-        ChangeKegButton.layer.cornerRadius = 5
-        ChangeKegButton.setTitle("Swap", for: .normal)
+        changeKegButton.layer.cornerRadius = 5
+        changeKegButton.setTitle("Swap", for: .normal)
         
         enableChangeKegButton()
     }
     
     func disableChangeKegButton() {
-        ChangeKegButton.backgroundColor = UIColor.systemGray
-        ChangeKegButton.isEnabled = false
+        changeKegButton.backgroundColor = UIColor.systemGray
+        changeKegButton.isEnabled = false
     }
     
     func enableChangeKegButton() {
-        ChangeKegButton.backgroundColor = UIColor.systemBlue
-        ChangeKegButton.isEnabled = true
+        changeKegButton.backgroundColor = UIColor.systemBlue
+        changeKegButton.isEnabled = true
     }
     
     func setBeerIDLabel(forBeer beer: Beer) {
-        BeerIdTextField.text = String(format: "%.0f", beer.untappedBid)
+        beerIdTextField.text = String(format: "%.0f", beer.untappedBid)
     }
 }
 
