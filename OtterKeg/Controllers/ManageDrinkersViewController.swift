@@ -26,6 +26,7 @@ class ManageDrinkerViewController: UIViewController {
         setupNavBar()
         setupDrinkerTableView()
     }
+    
 }
 
 
@@ -44,6 +45,12 @@ extension ManageDrinkerViewController {
 
             navigationController?.navigationBar.prefersLargeTitles = true
         }
+        
+        let addDrinkerButton = UIBarButtonItem(title: "Add Drinker", style: .plain, target: self, action: #selector(addDrinkerButtonTapped))
+        addDrinkerButton.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+        
+        navigationItem.rightBarButtonItem = addDrinkerButton
+        
     }
     
     func setupDrinkerTableView() {
@@ -73,7 +80,6 @@ extension ManageDrinkerViewController: UITableViewDelegate, UITableViewDataSourc
             amountText = String(format:"%0.2f Pints", amount * 2.11338)
         }
         cell.amountLabel.text = amountText
-
 
         return cell
     }
@@ -133,3 +139,9 @@ extension ManageDrinkerViewController {
 }
 
 
+// Navigation helper functions
+extension ManageDrinkerViewController {
+    @objc func addDrinkerButtonTapped() {
+        print("add drinker")
+    }
+}
