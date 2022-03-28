@@ -11,9 +11,10 @@ class ManageDrinkerViewController: UIViewController {
 
     @IBOutlet var drinkerTableView: UITableView!
     
-    var drinkersDict = [String: Drinker]()
+    var drinkersDict = [String : Drinker]()
     var drinkersArray = [Drinker]()
     var pours = [Pour]()
+    var totalPoursForDrinkers = [Drinker : Double]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +67,13 @@ extension ManageDrinkerViewController: UITableViewDelegate, UITableViewDataSourc
         let drinker = self.drinkersArray[indexPath.row]
         
         cell.drinkerLabel.text = drinker.name
+        
+        var amountText = "0.0 Pints"
+        if let amount = totalPoursForDrinkers[drinker] {
+            amountText = String(format:"%0.2f Pints", amount * 2.11338)
+        }
+        cell.amountLabel.text = amountText
+
 
         return cell
     }
@@ -75,9 +83,10 @@ extension ManageDrinkerViewController: UITableViewDelegate, UITableViewDataSourc
 extension ManageDrinkerViewController {
     func setupData() {
         OtterKegFirebase.sharedFirebase.getDrinkers(onError: nil, onCompletion: { drinkers in
+            
             self.drinkersDict = drinkers
-            self.drinkersArray = Array(drinkers.values.map{$0})
-            self.drinkersArray = self.drinkersArray.sorted(by: {$0.name < $1.name} )
+            
+            self.buildTotalPoursDict()
            
             DispatchQueue.main.async {
                 self.drinkerTableView.reloadData()
@@ -87,9 +96,40 @@ extension ManageDrinkerViewController {
         OtterKegFirebase.sharedFirebase.getPours(onError: nil, onCompletion: { pours in
             self.pours = pours
             
+            self.buildTotalPoursDict()
+            
             DispatchQueue.main.async {
                 self.drinkerTableView.reloadData()
             }
         })
     }
+    
+    func buildTotalPoursDict() {
+        for drinker in self.drinkersDict.values {
+            self.totalPoursForDrinkers[drinker] = 0.0
+        }
+        
+        getTotalPoursForEachDrinker()
+        orderDrinkers()
+    }
+    
+    func getTotalPoursForEachDrinker() {
+        for pour in self.pours {
+            if let drinker = drinkersDict[pour.drinkerId] {
+                let existingValue = totalPoursForDrinkers[drinker] ?? 0.0
+                totalPoursForDrinkers[drinker] = existingValue + pour.amount
+            } else {
+                print("Bad Drinker ID")
+            }
+        }
+        
+        print(totalPoursForDrinkers)
+    }
+    
+    func orderDrinkers() {
+        self.drinkersArray = Array(self.drinkersDict.values.map{$0})
+        self.drinkersArray = self.drinkersArray.sorted(by: {self.totalPoursForDrinkers[$0] ?? 0 > self.totalPoursForDrinkers[$1] ?? 0} )
+    }
 }
+
+

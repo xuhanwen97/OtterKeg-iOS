@@ -149,7 +149,7 @@
             <objects>
                 <navigationController title="Pours" id="b3d-n3-z6T" userLabel="Pours Navigation Controller" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <tabBarItem key="tabBarItem" title="Item" id="Jh8-lE-uSF"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="checkmark.circle.fill" catalog="system" id="Jh8-lE-uSF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3I8-M9-2Eh">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -302,10 +302,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
-                        <segue destination="b3d-n3-z6T" kind="relationship" relationship="viewControllers" id="sbn-6a-unG"/>
                         <segue destination="VjA-qI-gYS" kind="relationship" relationship="viewControllers" id="Je9-t0-Uqx"/>
+                        <segue destination="b3d-n3-z6T" kind="relationship" relationship="viewControllers" id="sbn-6a-unG"/>
                         <segue destination="Dbh-Jh-pLV" kind="relationship" relationship="viewControllers" id="22k-gl-irR"/>
                     </connections>
                 </tabBarController>
@@ -378,7 +383,7 @@
             <objects>
                 <navigationController title="Drinkers" id="Dbh-Jh-pLV" userLabel="Drinker Navigation Controller" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <tabBarItem key="tabBarItem" title="Item" id="nfC-uA-UrW"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="archivebox.circle.fill" catalog="system" id="nfC-uA-UrW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sij-GB-z31">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -405,7 +410,7 @@
             <objects>
                 <navigationController title="Kegs" id="VjA-qI-gYS" userLabel="Kegs Navigation Controller" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <tabBarItem key="tabBarItem" title="Item" id="HHN-f9-Kb4"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="checkmark.square.fill" catalog="system" id="HHN-f9-Kb4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="YLw-H2-l76">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -429,6 +434,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="archivebox.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="checkmark.square.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

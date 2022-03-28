@@ -47,3 +47,10 @@ struct Drinker {
     }
 
 }
+
+extension Drinker: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(key)
+        hasher.combine(name)
+    }
+}
