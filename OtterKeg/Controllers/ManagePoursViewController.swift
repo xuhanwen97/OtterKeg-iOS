@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ManagePoursViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var poursTableView: UITableView!
     
@@ -24,9 +24,6 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var beers = [String: Beer]()
     let beersRef = Database.database().reference(withPath: "beers")
     
-    // RGB - 34/44/50, #202B34
-    let otterKegBackground = UIColor(red: 0.13, green: 0.17, blue: 0.20, alpha: 1.00)
-    
     var selectedPour: Pour? = nil
     var selectedDrinker: Drinker? = nil
     
@@ -38,28 +35,12 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Pours"
-        
-        if #available(iOS 13.0, *) {
-            let navBarAppearance = UINavigationBarAppearance()
-            navBarAppearance.configureWithOpaqueBackground()
-            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-            navBarAppearance.backgroundColor = otterKegBackground
-            
-            self.navigationController?.navigationBar.standardAppearance = navBarAppearance
-            self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        setupData()
 
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
-                
-        self.poursTableView.showsVerticalScrollIndicator = false
-        self.poursTableView.separatorColor = .lightGray
-        self.poursTableView.separatorInset = .zero
-        self.poursTableView.backgroundColor = otterKegBackground
-    
-        // Do any additional setup after loading the view.
-        getAllData()
+        self.navigationItem.title = "Pours"
+        
+        setupNavBar()
+        setupPoursTableView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,11 +67,34 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
 }
 
+// UI elements helper functions
+extension ManagePoursViewController {
+    func setupNavBar() {
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.backgroundColor = ColorConstants.otterKegBackground
+            
+            self.navigationController?.navigationBar.standardAppearance = navBarAppearance
+            self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
 
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
+    }
+    
+    func setupPoursTableView() {
+        self.poursTableView.showsVerticalScrollIndicator = false
+        self.poursTableView.separatorColor = .lightGray
+        self.poursTableView.separatorInset = .zero
+        self.poursTableView.backgroundColor = ColorConstants.otterKegBackground
+    }
+}
 
 
 // TableViewController Functions
-extension PoursViewController {
+extension ManagePoursViewController {
     // Table View Controllers
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pours.count
@@ -145,7 +149,7 @@ extension PoursViewController {
 
 
 // Table View Cell Action Handlers
-extension PoursViewController {
+extension ManagePoursViewController {
     
     //SECTION: TableViewCell swipe action handler
     private func handleDeleteAction(indexPath: IndexPath) {
@@ -168,9 +172,9 @@ extension PoursViewController {
     }
 }
 
-// Firebase data functions
-extension PoursViewController {
-    func getAllData() {
+// Data helper functions
+extension ManagePoursViewController {
+    func setupData() {
         getDrinkers()
         getKegsAndBeers()
     }

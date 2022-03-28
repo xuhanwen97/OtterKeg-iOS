@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-final class ManageKegController: UIViewController{
+final class ManageKegController: UIViewController {
     
     @IBOutlet weak var whichKegLabel: UILabel!
     @IBOutlet weak var kegPickerView: UIPickerView!
@@ -19,9 +19,6 @@ final class ManageKegController: UIViewController{
     @IBOutlet weak var beerIdTextField: UITextField!
     
     @IBOutlet weak var changeKegButton: UIButton!
-
-    
-    @IBOutlet weak var manageKegsTitle: UILabel!
     
     var kegsArray = [Keg]()
     private var activeKegsArray = [Keg]()
@@ -32,38 +29,37 @@ final class ManageKegController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //UI Setup
-        manageKegsTitle.text = "Kegs"
-        setupChangeKegButton()
-        
         //Data Setup
         setupData()
-    }
-    
-    func setupData() {
-        OtterKegFirebase.sharedFirebase.getBeers(onError: nil, onCompletion: { beers in
-            self.beersDict = beers
-            self.beersArray = Array(beers.values.map{$0})
-            self.beersArray = self.beersArray.sorted(by: {$0.nameDeprecated < $1.nameDeprecated} )
-            DispatchQueue.main.async {
-                self.kegPickerView.reloadAllComponents()
-                self.beerPickerView.reloadAllComponents()
-                self.setBeerIDLabel(forBeer: self.beersArray[0])
-            }
-        })
-
-        OtterKegFirebase.sharedFirebase.getKegs(onError: nil, onCompletion: { kegs in
-            self.kegsArray = Array(kegs.values.map{$0})
-            self.kegsArray = self.kegsArray.sorted(by: {$0.position < $1.position} )
-            self.activeKegsArray = self.kegsArray.filter( {$0.isActive} )
-            DispatchQueue.main.async {
-                self.kegPickerView.reloadAllComponents()
-            }
-        })
+        
+        //UI Setup
+        self.navigationItem.title = "Kegs"
+        
+        setupNavBar()
+        setupChangeKegButton()
     }
 
 }
 
+// UI elements helper functions
+extension ManageKegController {
+    func setupNavBar() {
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.backgroundColor = ColorConstants.otterKegBackground
+            
+            self.navigationController?.navigationBar.standardAppearance = navBarAppearance
+            self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
+    }
+}
+
+// Picker View Helper Functions
 extension ManageKegController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         var numComps = 1
@@ -146,3 +142,27 @@ extension ManageKegController {
     }
 }
 
+// Data helper functions
+extension ManageKegController {
+    func setupData() {
+        OtterKegFirebase.sharedFirebase.getBeers(onError: nil, onCompletion: { beers in
+            self.beersDict = beers
+            self.beersArray = Array(beers.values.map{$0})
+            self.beersArray = self.beersArray.sorted(by: {$0.nameDeprecated < $1.nameDeprecated} )
+            DispatchQueue.main.async {
+                self.kegPickerView.reloadAllComponents()
+                self.beerPickerView.reloadAllComponents()
+                self.setBeerIDLabel(forBeer: self.beersArray[0])
+            }
+        })
+
+        OtterKegFirebase.sharedFirebase.getKegs(onError: nil, onCompletion: { kegs in
+            self.kegsArray = Array(kegs.values.map{$0})
+            self.kegsArray = self.kegsArray.sorted(by: {$0.position < $1.position} )
+            self.activeKegsArray = self.kegsArray.filter( {$0.isActive} )
+            DispatchQueue.main.async {
+                self.kegPickerView.reloadAllComponents()
+            }
+        })
+    }
+}

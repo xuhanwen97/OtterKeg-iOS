@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Pours View Controller-->
+        <!--Manage Pours View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PoursViewController" customModule="OtterKeg" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ManagePoursViewController" customModule="OtterKeg" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="a05-j0-za3" userLabel="Pours Table View">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -142,12 +142,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YvZ-Oh-OXu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2784.057971014493" y="-256.47321428571428"/>
+            <point key="canvasLocation" x="2835" y="90"/>
         </scene>
-        <!--Pours-->
+        <!--Pours Navigation Controller-->
         <scene sceneID="ftj-d4-BHt">
             <objects>
-                <navigationController title="Pours" id="b3d-n3-z6T" sceneMemberID="viewController">
+                <navigationController title="Pours" id="b3d-n3-z6T" userLabel="Pours Navigation Controller" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <tabBarItem key="tabBarItem" title="Item" id="Jh8-lE-uSF"/>
                     <toolbarItems/>
@@ -184,17 +184,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TITLE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yk-qt-XNp" userLabel="Title Label">
-                                <rect key="frame" x="8" y="44" width="398" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="hg8-E3-Xck"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="mZk-e6-Mo6" userLabel="Keg Picker View">
-                                <rect key="frame" x="8" y="132" width="398" height="96"/>
+                                <rect key="frame" x="8" y="128" width="398" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="96" id="Q40-Zg-2cb"/>
                                 </constraints>
@@ -204,14 +195,14 @@
                                 </connections>
                             </pickerView>
                             <pickerView contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="ZGJ-pf-PBb" userLabel="Beer Picker View">
-                                <rect key="frame" x="8" y="388" width="398" height="216"/>
+                                <rect key="frame" x="8" y="384" width="398" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="meq-2F-USQ" id="Qba-38-wu1"/>
                                     <outlet property="delegate" destination="meq-2F-USQ" id="GmG-pD-5yB"/>
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Past Beers (select for ID)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JB-hh-eQm" userLabel="Beer Picker Label">
-                                <rect key="frame" x="24" y="348" width="390" height="40"/>
+                                <rect key="frame" x="24" y="344" width="390" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rzN-29-IK1"/>
                                 </constraints>
@@ -220,7 +211,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Untappd Beer ID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzo-mx-qYl" userLabel="Beer ID Label">
-                                <rect key="frame" x="24" y="244" width="390" height="40"/>
+                                <rect key="frame" x="24" y="240" width="390" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5K7-q8-oSa"/>
                                 </constraints>
@@ -229,7 +220,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u3b-vy-bpp">
-                                <rect key="frame" x="16" y="292" width="382" height="40"/>
+                                <rect key="frame" x="16" y="288" width="382" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Q2W-RK-8Yz"/>
@@ -252,7 +243,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Keg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4h-Ib-f9g" userLabel="Keg Picker Label">
-                                <rect key="frame" x="24" y="92" width="390" height="40"/>
+                                <rect key="frame" x="24" y="88" width="390" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rbc-KZ-quf"/>
                                 </constraints>
@@ -264,12 +255,10 @@
                         <viewLayoutGuide key="safeArea" id="RxX-0W-eKz"/>
                         <color key="backgroundColor" red="0.12549019610000001" green="0.16862745100000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Yk-qt-XNp" firstAttribute="top" secondItem="RxX-0W-eKz" secondAttribute="top" id="277-fY-uk5"/>
                             <constraint firstItem="ZGJ-pf-PBb" firstAttribute="top" secondItem="3JB-hh-eQm" secondAttribute="bottom" id="4kf-fU-wae"/>
                             <constraint firstItem="mZk-e6-Mo6" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="8" id="6aq-fl-sTK"/>
                             <constraint firstItem="yVu-cn-R45" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="8" id="7tZ-1g-Eso"/>
                             <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="tzo-mx-qYl" secondAttribute="trailing" id="Bpl-yx-WAR"/>
-                            <constraint firstItem="6Yk-qt-XNp" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="8" id="DC0-Ib-z4Y"/>
                             <constraint firstItem="tzo-mx-qYl" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="24" id="OCH-rg-3ZN"/>
                             <constraint firstItem="ZGJ-pf-PBb" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="8" id="QL0-0G-ab1"/>
                             <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="yVu-cn-R45" secondAttribute="trailing" constant="8" id="QLY-l9-IC7"/>
@@ -285,26 +274,24 @@
                             <constraint firstItem="M4h-Ib-f9g" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="24" id="msS-YL-9lR"/>
                             <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="3JB-hh-eQm" secondAttribute="trailing" id="nHr-6O-oGy"/>
                             <constraint firstItem="3JB-hh-eQm" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="24" id="noQ-FH-Twg"/>
-                            <constraint firstItem="M4h-Ib-f9g" firstAttribute="top" secondItem="6Yk-qt-XNp" secondAttribute="bottom" constant="8" id="oD7-3e-44n"/>
                             <constraint firstItem="u3b-vy-bpp" firstAttribute="leading" secondItem="RxX-0W-eKz" secondAttribute="leading" constant="16" id="pV4-dn-iJm"/>
-                            <constraint firstItem="RxX-0W-eKz" firstAttribute="trailing" secondItem="6Yk-qt-XNp" secondAttribute="trailing" constant="8" id="yrl-QM-Roy"/>
+                            <constraint firstItem="M4h-Ib-f9g" firstAttribute="top" secondItem="RxX-0W-eKz" secondAttribute="top" id="vdT-CO-VzF"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="HHN-f9-Kb4"/>
+                    <navigationItem key="navigationItem" id="fYI-5B-9Lv"/>
                     <connections>
                         <outlet property="beerIDLabel" destination="tzo-mx-qYl" id="qtb-He-KOK"/>
                         <outlet property="beerIdTextField" destination="u3b-vy-bpp" id="Ugh-EK-DYb"/>
                         <outlet property="beerPickerView" destination="ZGJ-pf-PBb" id="TXB-Ck-10L"/>
                         <outlet property="changeKegButton" destination="yVu-cn-R45" id="Usi-Is-AjZ"/>
                         <outlet property="kegPickerView" destination="mZk-e6-Mo6" id="QjO-tJ-aXW"/>
-                        <outlet property="manageKegsTitle" destination="6Yk-qt-XNp" id="tyw-g7-KP7"/>
                         <outlet property="whichBeerLabel" destination="3JB-hh-eQm" id="amw-XT-iwF"/>
                         <outlet property="whichKegLabel" destination="M4h-Ib-f9g" id="fjq-8C-sb4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sjC-1E-jxd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1786" y="823"/>
+            <point key="canvasLocation" x="1942.0289855072465" y="818.97321428571422"/>
         </scene>
         <!--Otter Keg Tab Bar Controller-->
         <scene sceneID="JIZ-ZU-ZHQ">
@@ -318,12 +305,127 @@
                     </tabBar>
                     <connections>
                         <segue destination="b3d-n3-z6T" kind="relationship" relationship="viewControllers" id="sbn-6a-unG"/>
-                        <segue destination="meq-2F-USQ" kind="relationship" relationship="viewControllers" id="Je9-t0-Uqx"/>
+                        <segue destination="VjA-qI-gYS" kind="relationship" relationship="viewControllers" id="Je9-t0-Uqx"/>
+                        <segue destination="Dbh-Jh-pLV" kind="relationship" relationship="viewControllers" id="22k-gl-irR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tvu-eL-eM4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="121.73913043478262" y="89.732142857142847"/>
+        </scene>
+        <!--ManageDrinkerViewController-->
+        <scene sceneID="Q4A-jd-tum">
+            <objects>
+                <viewController id="fbu-aK-LfA" userLabel="ManageDrinkerViewController" customClass="ManageDrinkerViewController" customModule="OtterKeg" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="poj-pu-kG8" userLabel="Drinker Table View">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DrinkerCell" id="q9g-k4-uQj" userLabel="DrinkerTableViewCell" customClass="DrinkerTableViewCell" customModule="OtterKeg" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q9g-k4-uQj" id="ncc-HQ-g78">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Drinker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccw-bD-IHB" userLabel="Drinker">
+                                            <rect key="frame" x="20" y="10.5" width="64.5" height="23"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWP-xg-SGj" userLabel="Amount">
+                                            <rect key="frame" x="334" y="11.5" width="60" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.12549019610000001" green="0.16862745100000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstItem="LWP-xg-SGj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ccw-bD-IHB" secondAttribute="trailing" constant="16" id="ZrR-6z-KO1"/>
+                                        <constraint firstItem="ccw-bD-IHB" firstAttribute="leading" secondItem="ncc-HQ-g78" secondAttribute="leading" constant="20" symbolic="YES" id="dfg-G6-FUg"/>
+                                        <constraint firstItem="ccw-bD-IHB" firstAttribute="centerY" secondItem="ncc-HQ-g78" secondAttribute="centerY" id="fSh-tf-dCz"/>
+                                        <constraint firstItem="LWP-xg-SGj" firstAttribute="centerY" secondItem="ncc-HQ-g78" secondAttribute="centerY" id="ng8-UD-qNN"/>
+                                        <constraint firstAttribute="trailing" secondItem="LWP-xg-SGj" secondAttribute="trailing" constant="20" symbolic="YES" id="rxI-MP-bUv"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="amountLabel" destination="LWP-xg-SGj" id="99d-Ur-6Mj"/>
+                                    <outlet property="drinkerLabel" destination="ccw-bD-IHB" id="IV9-yO-5yU"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fbu-aK-LfA" id="wtk-Cc-twm"/>
+                            <outlet property="delegate" destination="fbu-aK-LfA" id="ccE-an-T7K"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="lX6-Ve-wrg"/>
+                    <connections>
+                        <outlet property="drinkerTableView" destination="poj-pu-kG8" id="JXa-7T-uTr"/>
+                        <outlet property="view" destination="poj-pu-kG8" id="HhT-yA-ijp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tLc-El-4ne" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1942.0289855072465" y="1548.8839285714284"/>
+        </scene>
+        <!--Drinker Navigation Controller-->
+        <scene sceneID="KBB-GX-jcp">
+            <objects>
+                <navigationController title="Drinkers" id="Dbh-Jh-pLV" userLabel="Drinker Navigation Controller" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="nfC-uA-UrW"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Sij-GB-z31">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.12549019610000001" green="0.16862745100000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fbu-aK-LfA" kind="relationship" relationship="rootViewController" id="ELQ-Ng-PJP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o8m-BB-rJ7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1031.8840579710145" y="1548.8839285714284"/>
+        </scene>
+        <!--Kegs Navigation Controller-->
+        <scene sceneID="KQV-kD-G1u">
+            <objects>
+                <navigationController title="Kegs" id="VjA-qI-gYS" userLabel="Kegs Navigation Controller" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="HHN-f9-Kb4"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YLw-H2-l76">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.12549019610000001" green="0.16862745100000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="meq-2F-USQ" kind="relationship" relationship="rootViewController" id="hzf-gy-mYY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uYX-tb-66u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1031.8840579710145" y="818.97321428571422"/>
         </scene>
     </scenes>
     <resources>
