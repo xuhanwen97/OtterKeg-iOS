@@ -29,7 +29,6 @@ class ManageDrinkerViewController: UIViewController {
     
 }
 
-
 // UI elements helper functions
 extension ManageDrinkerViewController {
     func setupNavBar() {
@@ -73,7 +72,7 @@ extension ManageDrinkerViewController: UITableViewDelegate, UITableViewDataSourc
         
         let drinker = self.drinkersArray[indexPath.row]
         
-        cell.drinkerLabel.text = drinker.name
+        cell.drinkerLabel.text = String(format:"%@ - %@", drinker.name, drinker.userStatus)
         
         var amountText = "0.0 Pints"
         if let amount = totalPoursForDrinkers[drinker] {
@@ -82,6 +81,10 @@ extension ManageDrinkerViewController: UITableViewDelegate, UITableViewDataSourc
         cell.amountLabel.text = amountText
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

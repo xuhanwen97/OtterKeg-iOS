@@ -15,20 +15,24 @@ struct Drinker {
 
     let isActive: Bool
     let name: String
+    let userStatus: String
     
-    internal init(key: String, isActive: Bool, name: String) {
+    internal init(key: String, isActive: Bool, name: String, userStatus: String) {
         self.ref = nil
         
         self.key = key
         self.isActive = isActive
         self.name = name
+        self.userStatus = userStatus
     }
     
     init?(snapshot: DataSnapshot) {
         guard
             let value = snapshot.value as? [String: AnyObject],
             let isActive = value["isActive"] as? Bool,
-            let name = value["name"] as? String else {
+            let name = value["name"] as? String,
+            let userStatus = value["userStatus"] as? String
+        else {
             return nil
         }
         
@@ -37,12 +41,14 @@ struct Drinker {
 
         self.isActive = isActive
         self.name = name
+        self.userStatus = userStatus
     }
 
     func toAnyObject() -> Any {
         return [
             "isActive": isActive,
-            "name": name
+            "name": name,
+            "userStatus": userStatus
         ]
     }
 

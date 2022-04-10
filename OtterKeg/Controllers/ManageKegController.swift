@@ -15,10 +15,19 @@ final class ManageKegController: UIViewController {
     
     @IBOutlet weak var whichBeerLabel: UILabel!
     @IBOutlet weak var beerPickerView: UIPickerView!
-    @IBOutlet weak var beerIDLabel: UILabel!
+    
+    @IBOutlet weak var beerNameLabel: UILabel!
+    @IBOutlet weak var beerNameTextField: UITextField!
+    @IBAction func beerNameTextFieldOnEditingChanged(_ sender: Any) { setChangeKegButtonState() }
+    
+    @IBOutlet weak var beerIdLabel: UILabel!
     @IBOutlet weak var beerIdTextField: UITextField!
+    @IBAction func beerIdTextFieldOnEditingChanged(_ sender: Any) { setChangeKegButtonState() }
     
     @IBOutlet weak var changeKegButton: UIButton!
+    @IBAction func changeKegButtonOnTouchUp(_ sender: Any) {
+        changeKegButtonSelected()
+    }
     
     var kegsArray = [Keg]()
     private var activeKegsArray = [Keg]()
@@ -38,7 +47,6 @@ final class ManageKegController: UIViewController {
         setupNavBar()
         setupChangeKegButton()
     }
-
 }
 
 // UI elements helper functions
@@ -109,11 +117,10 @@ extension ManageKegController: UIPickerViewDelegate, UIPickerViewDataSource {
         } else if pickerView == beerPickerView {
             let beer = beersArray[row]
             let rowName = String(format:"%@ - %@", beer.nameDeprecated, String(format: "%.0f", beer.untappedBid))
-            setBeerIDLabel(forBeer: beer)
+            setLabelsForSelectedBeer(forBeer: beer)
             print("Beer \"\(rowName)\" selected")
         }
     }
-    
 }
 
 
@@ -123,7 +130,15 @@ extension ManageKegController {
         changeKegButton.layer.cornerRadius = 5
         changeKegButton.setTitle("Swap", for: .normal)
         
-        enableChangeKegButton()
+        setChangeKegButtonState()
+    }
+    
+    func setChangeKegButtonState() {
+        if beerIdTextField.text?.count == 0 || beerNameTextField.text?.count == 0 {
+            disableChangeKegButton()
+        } else {
+            enableChangeKegButton()
+        }
     }
     
     func disableChangeKegButton() {
@@ -136,9 +151,41 @@ extension ManageKegController {
         changeKegButton.isEnabled = true
     }
     
-    func setBeerIDLabel(forBeer beer: Beer) {
+    func changeKegButtonSelected() {
+        // The button status is set based on the two required text fields, so this is a lazy man's error check.
+        if !changeKegButton.isEnabled {
+            print("change keg button is not enabled, cannot change kegs")
+            return
+        }
+        
+        let selectedExistingKeg = activeKegsArray[kegPickerView.selectedRow(inComponent: 0)]
+        
+        if let newKegUntappdBid = beerIdTextField.text {
+            if let newKegNameDeprecated = beerNameTextField.text {
+                if !newKegUntappdBid.isEmpty && !newKegNameDeprecated.isEmpty {
+                    OtterKegFirebase.sharedFirebase.swapKegs(existingKeg: selectedExistingKeg, newNameDeprecated: newKegNameDeprecated, newUntappdBid: Double(newKegUntappdBid) ?? 0, onError: nil, onCompletion: {
+                        print("Kegs swapped successfully!")
+                        self.setupData()
+                    })
+                    return
+                }
+            }
+        }
+        
+        //Should not get here, if it does, something failed
+        print("Swapping Kegs failed, no Untappd Beer ID")
+        
+        
+    }
+    
+    func setLabelsForSelectedBeer(forBeer beer: Beer) {
+        beerNameTextField.textColor = .black
+        beerNameTextField.text = String(beer.nameDeprecated)
+        
         beerIdTextField.textColor = .black
         beerIdTextField.text = String(format: "%.0f", beer.untappedBid)
+        
+        setChangeKegButtonState()
     }
 }
 
@@ -152,7 +199,7 @@ extension ManageKegController {
             DispatchQueue.main.async {
                 self.kegPickerView.reloadAllComponents()
                 self.beerPickerView.reloadAllComponents()
-                self.setBeerIDLabel(forBeer: self.beersArray[0])
+                self.setLabelsForSelectedBeer(forBeer: self.beersArray[0])
             }
         })
 

@@ -93,4 +93,59 @@ class OtterKegFirebase {
             onCompletion(self.pours)
         })
     }
+    
+    func swapKegs(existingKeg: Keg, newNameDeprecated: String, newUntappdBid: Double, onError: ((Error?) -> Void)?, onCompletion: @escaping () -> Void) {
+        //Try to find Untappd Beer ID in existing beers
+        
+        //Create new beer/get existing beer's ID, then create the Keg, and deactivate existing Keg.
+        self.createBeer(nameDeprecated: newNameDeprecated, untappedBid: newUntappdBid, onError: nil, onCompletion: { newBeerKey in
+            
+            self.createKeg(beerId: newBeerKey, isActive: true, position: existingKeg.position, sizeInPints: 41.0, onError: nil, onCompletion: { newKegKey in
+                
+                //Deactivate existing Keg
+                self.kegsRef.child(existingKeg.key).updateChildValues([
+                    "isActive": false
+                ])
+                
+                onCompletion()
+                return
+            })
+        })
+    }
+
+    
+    func createBeer(nameDeprecated: String, untappedBid: Double, onError: ((Error?) -> Void)?, onCompletion: @escaping (String) -> Void) {
+        if let existingBeer = self.beers.values.first(where: {$0.untappedBid == untappedBid}) {
+            onCompletion(existingBeer.key)
+            return
+        }
+        
+        if let newBeerKey = self.beersRef.childByAutoId().key {
+            self.beersRef.child(newBeerKey).updateChildValues([
+                "nameDeprecated": nameDeprecated,
+                "untappedBid": untappedBid,
+            ])
+            onCompletion(newBeerKey)
+            return
+        }
+        
+        onCompletion("")
+    }
+    
+    // Does not create a beer if one already exists in local download of realtime db -> not good, but I was lazy
+    func createKeg(beerId: String, isActive: Bool, position: String, sizeInPints: Double, onError: ((Error?) -> Void)?, onCompletion: @escaping (String) -> Void) {
+        if let newKegKey = self.kegsRef.childByAutoId().key {
+            self.kegsRef.child(newKegKey).updateChildValues([
+                "beerId": beerId,
+                "isActive": isActive,
+                "position": position,
+                "sizeInPints": sizeInPints
+            ])
+            onCompletion(newKegKey)
+            return
+        }
+        
+        onCompletion("")
+    }
+
 }

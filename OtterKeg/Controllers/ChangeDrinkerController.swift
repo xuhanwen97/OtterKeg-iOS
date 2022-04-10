@@ -57,7 +57,7 @@ extension ChangeDrinkerController: UIPickerViewDelegate, UIPickerViewDataSource 
     
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: drinkers[row].name, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        return NSAttributedString(string: String(format:"%@ - %@", drinkers[row].name, drinkers[row].userStatus), attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
