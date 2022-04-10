@@ -12,6 +12,7 @@ struct Beer {
     let ref: DatabaseReference?
     let key: String
 
+    //nameDeprecated is not actually used to dispay info on OtterKeg terminals
     let nameDeprecated: String
     let untappedBid: Double
     

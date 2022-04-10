@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ManagePoursViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var poursTableView: UITableView!
     
@@ -24,41 +24,23 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var beers = [String: Beer]()
     let beersRef = Database.database().reference(withPath: "beers")
     
-    // RGB - 34/44/50, #202B34
-    let otterKegBackground = UIColor(red: 0.13, green: 0.17, blue: 0.20, alpha: 1.00)
-    
     var selectedPour: Pour? = nil
     var selectedDrinker: Drinker? = nil
     
     lazy var slideInTransitioningDelegate = SlideInPresentationManager()
 
+    override func viewWillAppear(_ animated: Bool) {
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 13.0, *) {
-            let navBarAppearance = UINavigationBarAppearance()
-            navBarAppearance.configureWithOpaqueBackground()
-            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-            navBarAppearance.backgroundColor = otterKegBackground
-            
-            self.navigationController?.navigationBar.standardAppearance = navBarAppearance
-            self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        setupData()
 
-            navigationController?.navigationBar.prefersLargeTitles = true
-            self.title = "OtterKeg Pours"
-        }
-                
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Kegs", style: .plain, target: self, action: #selector(kegsButtonTapped))
-
-        self.poursTableView.showsVerticalScrollIndicator = false
-        self.poursTableView.separatorColor = .lightGray
-        self.poursTableView.separatorInset = .zero
+        self.navigationItem.title = "Pours"
         
-        // Do any additional setup after loading the view.
-        getKegsAndBeers()
-        getDrinkers()
+        setupNavBar()
+        setupPoursTableView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -80,36 +62,39 @@ class PoursViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.selectedPour = nil
                 self.selectedDrinker = nil
             }
-        } else if segue.identifier == "ManageKegsSegue" {
-            if let controller = segue.destination as? ManageKegController {
-                // Half screen segue code
-//                slideInTransitioningDelegate.direction = .bottom
-//                slideInTransitioningDelegate.disableCompactHeight = true
-//
-//                controller.transitioningDelegate = slideInTransitioningDelegate
-//                controller.modalPresentationStyle = .custom
-                
-                // Handle any keg related data fetching?
-                controller.kegs = self.kegs
-                controller.beers = self.beers
-            }
         }
     }
     
 }
 
+// UI elements helper functions
+extension ManagePoursViewController {
+    func setupNavBar() {
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.backgroundColor = ColorConstants.otterKegBackground
+            
+            self.navigationController?.navigationBar.standardAppearance = navBarAppearance
+            self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
 
-// Nav bar functions
-extension PoursViewController {
-    // Presents keg management page
-    @objc func kegsButtonTapped() {
-        performSegue(withIdentifier: "ManageKegsSegue", sender: self)
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
+    }
+    
+    func setupPoursTableView() {
+        self.poursTableView.showsVerticalScrollIndicator = false
+        self.poursTableView.separatorColor = .lightGray
+        self.poursTableView.separatorInset = .zero
+        self.poursTableView.backgroundColor = ColorConstants.otterKegBackground
     }
 }
 
 
 // TableViewController Functions
-extension PoursViewController {
+extension ManagePoursViewController {
     // Table View Controllers
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return pours.count
@@ -122,18 +107,15 @@ extension PoursViewController {
         
         let drinkerName = String(self.drinkers[pour.drinkerId]?.name ?? "Unknown Drinker")
         
+        var beerInPourName = "Unknown Beer"
+        
         if let keg = self.kegs[pour.kegId] {
             if let beer = self.beers[keg.beerId] {
-                let kegBeerName = String(beer.nameDeprecated)
-                
-                cell.drinkerLabel.text = "\(drinkerName) - \(kegBeerName)"
+                beerInPourName = String(beer.nameDeprecated)
             }
-        } else {
-            let kegBeerName = "Unknown Beer"
-            
-            cell.drinkerLabel.text = "\(drinkerName) - \(kegBeerName)"
         }
         
+        cell.drinkerLabel.text = "\(drinkerName) - \(beerInPourName)"
         
         cell.amountLabel.text = String(pour.amount) + " L"
         
@@ -167,7 +149,7 @@ extension PoursViewController {
 
 
 // Table View Cell Action Handlers
-extension PoursViewController {
+extension ManagePoursViewController {
     
     //SECTION: TableViewCell swipe action handler
     private func handleDeleteAction(indexPath: IndexPath) {
@@ -190,8 +172,13 @@ extension PoursViewController {
     }
 }
 
-// Firebase data functions
-extension PoursViewController {
+// Data helper functions
+extension ManagePoursViewController {
+    func setupData() {
+        getDrinkers()
+        getKegsAndBeers()
+    }
+    
     func getDrinkers() {
         drinkersRef.getData { (error, snapshot) in
             //TODO: Add error check

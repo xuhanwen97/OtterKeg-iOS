@@ -11,9 +11,9 @@ import Firebase
 
 final class ChangeDrinkerController: UIViewController{
     
-    @IBOutlet var DrinkerPicker: UIPickerView!
-    @IBOutlet weak var ChangeDrinkerButton: UIButton!
-    @IBOutlet weak var CurrentDrinkerLabel: UILabel!
+    @IBOutlet var drinkerPickerView: UIPickerView!
+    @IBOutlet weak var changeDrinkerButton: UIButton!
+    @IBOutlet weak var currentDrinkerLabel: UILabel!
     
     var drinkers = [Drinker]()
     
@@ -23,8 +23,8 @@ final class ChangeDrinkerController: UIViewController{
     private var selectedDrinker: Drinker? = nil
     
     override func viewDidLoad() {
-        ChangeDrinkerButton.backgroundColor = UIColor.systemBlue
-        ChangeDrinkerButton.layer.cornerRadius = 5
+        changeDrinkerButton.backgroundColor = UIColor.systemBlue
+        changeDrinkerButton.layer.cornerRadius = 5
         
         guard let originalSelectedDrinkerPosition = drinkers.firstIndex(where: {$0.name == originalSelectedDrinker?.name})
         else {
@@ -32,9 +32,9 @@ final class ChangeDrinkerController: UIViewController{
             return
         }
         
-        CurrentDrinkerLabel.text = "Currently Poured For: \(originalSelectedDrinker?.name ?? "Unknown Drinker")"
+        currentDrinkerLabel.text = "Currently Poured For: \(originalSelectedDrinker?.name ?? "Unknown Drinker")"
         
-        DrinkerPicker.selectRow(originalSelectedDrinkerPosition, inComponent: 0, animated: true)
+        drinkerPickerView.selectRow(originalSelectedDrinkerPosition, inComponent: 0, animated: true)
         disableChangeDrinkerButton()
     }
     
@@ -55,8 +55,9 @@ extension ChangeDrinkerController: UIPickerViewDelegate, UIPickerViewDataSource 
         return drinkers.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return drinkers[row].name
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: String(format:"%@ - %@", drinkers[row].name, drinkers[row].userStatus), attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -68,7 +69,11 @@ extension ChangeDrinkerController: UIPickerViewDelegate, UIPickerViewDataSource 
             enableChangeDrinkerButton()
         }
     }
-    
+
+}
+
+// Change drinker helper function
+extension ChangeDrinkerController {
     func updateDrinkerForPour() {
         guard let pour = originalSelectedPour else { print("Error: There should always be an original selected pour"); return; }
         guard let newDrinker = selectedDrinker else { print("Error: There should always be a newly selected drinker"); return; }
@@ -88,15 +93,16 @@ extension ChangeDrinkerController: UIPickerViewDelegate, UIPickerViewDataSource 
     }
 }
 
+
 // UI elements helper functions
 extension ChangeDrinkerController {
     func disableChangeDrinkerButton() {
-        ChangeDrinkerButton.backgroundColor = UIColor.systemGray
-        ChangeDrinkerButton.isEnabled = false
+        changeDrinkerButton.backgroundColor = UIColor.systemGray
+        changeDrinkerButton.isEnabled = false
     }
     
     func enableChangeDrinkerButton() {
-        ChangeDrinkerButton.backgroundColor = UIColor.systemBlue
-        ChangeDrinkerButton.isEnabled = true
+        changeDrinkerButton.backgroundColor = UIColor.systemBlue
+        changeDrinkerButton.isEnabled = true
     }
 }
