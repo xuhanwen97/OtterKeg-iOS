@@ -14,21 +14,21 @@ struct Beer {
 
     //nameDeprecated is not actually used to dispay info on OtterKeg terminals
     let nameDeprecated: String
-    let untappedBid: Double
+    let untappdBid: Double
     
-    internal init(key: String, nameDeprecated: String, untappedBid: Double) {
+    internal init(key: String, nameDeprecated: String, untappdBid: Double) {
         self.ref = nil
         
         self.key = key
         self.nameDeprecated = nameDeprecated
-        self.untappedBid = untappedBid
+        self.untappdBid = untappdBid
     }
     
     init?(snapshot: DataSnapshot) {
         guard
             let value = snapshot.value as? [String: AnyObject],
-            let nameDeprecated = value["nameDeprecated"] as? String,
-            let untappedBid = value["untappedBid"] as? Double else {
+            let nameDeprecated = value[BeerConstants.beerDBKeyNameDeprecated] as? String,
+            let untappdBid = value[BeerConstants.beerDbKeyUntappdBid] as? Double else {
             return nil
         }
         
@@ -36,13 +36,13 @@ struct Beer {
         self.key = snapshot.key
 
         self.nameDeprecated = nameDeprecated
-        self.untappedBid = untappedBid
+        self.untappdBid = untappdBid
     }
 
     func toAnyObject() -> Any {
         return [
-            "nameDeprecated": nameDeprecated,
-            "untappedBid": untappedBid,
+            BeerConstants.beerDBKeyNameDeprecated: nameDeprecated,
+            BeerConstants.beerDbKeyUntappdBid: untappdBid,
         ]
     }
 }

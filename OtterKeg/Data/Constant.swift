@@ -17,3 +17,8 @@ struct DrinkerConstants {
     static let drinkerStatusActivate = "active"
     static let drinkerStatusDisable = "disabled"
 }
+
+struct BeerConstants {
+    static let beerDBKeyNameDeprecated = "nameDeprecated"
+    static let beerDbKeyUntappdBid = "untappedBid"
+}

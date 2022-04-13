@@ -106,7 +106,7 @@ extension ManageKegController: UIPickerViewDelegate, UIPickerViewDataSource {
             rowName = String(format:"%@ - %@", keg.position, self.beersDict[keg.beerId]?.nameDeprecated ?? "Unknown Beer")
         } else if pickerView == beerPickerView {
             let beer = self.beersArray[row]
-            rowName = String(format:"%@ - %@", beer.nameDeprecated, String(format: "%.0f", beer.untappedBid))
+            rowName = String(format:"%@ - %@", beer.nameDeprecated, String(format: "%.0f", beer.untappdBid))
             
             return NSAttributedString(string: rowName, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         }
@@ -121,7 +121,7 @@ extension ManageKegController: UIPickerViewDelegate, UIPickerViewDataSource {
             print("Keg \"\(rowName)\" selected")
         } else if pickerView == beerPickerView {
             let beer = beersArray[row]
-            let rowName = String(format:"%@ - %@", beer.nameDeprecated, String(format: "%.0f", beer.untappedBid))
+            let rowName = String(format:"%@ - %@", beer.nameDeprecated, String(format: "%.0f", beer.untappdBid))
             setLabelsForSelectedBeer(forBeer: beer)
             print("Beer \"\(rowName)\" selected")
         }
@@ -181,18 +181,29 @@ extension ManageKegController {
         
         if let newKegUntappdBid = beerIdTextField.text {
             if let newKegNameDeprecated = beerNameTextField.text {
-                if !newKegUntappdBid.isEmpty && !newKegNameDeprecated.isEmpty {
-                    OtterKegFirebase.sharedFirebase.swapKegs(existingKeg: selectedExistingKeg, newNameDeprecated: newKegNameDeprecated, newUntappdBid: Double(newKegUntappdBid) ?? 0, onError: nil, onCompletion: {
-                        print("Kegs swapped successfully!")
-                        self.setupData()
-                    })
-                    return
+                if let newKegNumberOfPints = kegVolumeTextField.text {
+                    if !newKegUntappdBid.isEmpty && !newKegNameDeprecated.isEmpty {
+                        let enteredUntappdBid = Double(newKegUntappdBid) ?? 0
+                        let enteredNumberOfPints = Double(newKegNumberOfPints) ?? 0
+                        
+                        OtterKegFirebase.sharedFirebase.swapKegs(
+                            existingKeg: selectedExistingKeg,
+                            newNameDeprecated: newKegNameDeprecated,
+                            newUntappdBid: enteredUntappdBid,
+                            numberOfPints: enteredNumberOfPints,
+                            onError: nil,
+                            onCompletion: {
+                                print("Kegs swapped successfully!")
+                                self.setupData()
+                            })
+                        return
+                    }
                 }
             }
         }
         
         //Should not get here, if it does, something failed
-        print("Swapping Kegs failed, no Untappd Beer ID")
+        print("Swapping Kegs failed, a required field is empty")
     }
     
     func setLabelsForSelectedBeer(forBeer beer: Beer) {
@@ -200,7 +211,7 @@ extension ManageKegController {
         beerNameTextField.text = String(beer.nameDeprecated)
         
         beerIdTextField.textColor = .black
-        beerIdTextField.text = String(format: "%.0f", beer.untappedBid)
+        beerIdTextField.text = String(format: "%.0f", beer.untappdBid)
         
         setChangeKegButtonState()
     }

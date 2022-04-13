@@ -94,13 +94,11 @@ class OtterKegFirebase {
         })
     }
     
-    func swapKegs(existingKeg: Keg, newNameDeprecated: String, newUntappdBid: Double, onError: ((Error?) -> Void)?, onCompletion: @escaping () -> Void) {
-        //Try to find Untappd Beer ID in existing beers
-        
+    func swapKegs(existingKeg: Keg, newNameDeprecated: String, newUntappdBid: Double, numberOfPints: Double, onError: ((Error?) -> Void)?, onCompletion: @escaping () -> Void) {
         //Create new beer/get existing beer's ID, then create the Keg, and deactivate existing Keg.
-        self.createBeer(nameDeprecated: newNameDeprecated, untappedBid: newUntappdBid, onError: nil, onCompletion: { newBeerKey in
+        self.createBeer(nameDeprecated: newNameDeprecated, untappdBid: newUntappdBid, onError: nil, onCompletion: { newBeerKey in
             
-            self.createKeg(beerId: newBeerKey, isActive: true, position: existingKeg.position, sizeInPints: 41.0, onError: nil, onCompletion: { newKegKey in
+            self.createKeg(beerId: newBeerKey, isActive: true, position: existingKeg.position, sizeInPints: numberOfPints, onError: nil, onCompletion: { newKegKey in
                 
                 //Deactivate existing Keg
                 self.kegsRef.child(existingKeg.key).updateChildValues([
@@ -113,17 +111,17 @@ class OtterKegFirebase {
         })
     }
 
-    
-    func createBeer(nameDeprecated: String, untappedBid: Double, onError: ((Error?) -> Void)?, onCompletion: @escaping (String) -> Void) {
-        if let existingBeer = self.beers.values.first(where: {$0.untappedBid == untappedBid}) {
+    //Will create a new beer in DB if one w/ untappdBid doesn't exist in local list.
+    func createBeer(nameDeprecated: String, untappdBid: Double, onError: ((Error?) -> Void)?, onCompletion: @escaping (String) -> Void) {
+        if let existingBeer = self.beers.values.first(where: {$0.untappdBid == untappdBid}) {
             onCompletion(existingBeer.key)
             return
         }
         
         if let newBeerKey = self.beersRef.childByAutoId().key {
             self.beersRef.child(newBeerKey).updateChildValues([
-                "nameDeprecated": nameDeprecated,
-                "untappedBid": untappedBid,
+                BeerConstants.beerDBKeyNameDeprecated: nameDeprecated,
+                BeerConstants.beerDbKeyUntappdBid: untappdBid,
             ])
             onCompletion(newBeerKey)
             return
