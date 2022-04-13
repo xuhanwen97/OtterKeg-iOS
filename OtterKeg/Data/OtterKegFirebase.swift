@@ -147,5 +147,10 @@ class OtterKegFirebase {
         
         onCompletion("")
     }
+    
+    func changeDrinkerStatus(drinker: Drinker, newStatus: String, onCompletion: @escaping () -> Void) {
+        drinkersRef.child(drinker.key).updateChildValues(["userStatus": newStatus])
+        onCompletion()
+    }
 
 }

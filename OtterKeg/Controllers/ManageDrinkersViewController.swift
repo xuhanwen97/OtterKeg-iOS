@@ -92,18 +92,18 @@ extension ManageDrinkerViewController: UITableViewDelegate, UITableViewDataSourc
         var swipeActions: [UIContextualAction] = []
 
         if drinker.userStatus == "active" {
-            let deactivateAction = UIContextualAction(style: .normal,
-                                                      title: "Deactivate") { [weak self] (action, view, completionHandler) in
-                self?.handleActivateDrinker()
+            let disableAction = UIContextualAction(style: .normal,
+                                                   title: "Disable") { [weak self] (action, view, completionHandler) in
+                self?.handleDisableAction(drinker: drinker)
                 completionHandler(true)
             }
-            deactivateAction.backgroundColor = .systemRed
+            disableAction.backgroundColor = .systemRed
             
-            swipeActions.append(deactivateAction)
+            swipeActions.append(disableAction)
         } else {
             let activateAction = UIContextualAction(style: .normal,
                                                     title: "Activate") { [weak self] (action, view, completionHandler) in
-                self?.handleActivateDrinker()
+                self?.handleActivateDrinker(drinker: drinker)
                 completionHandler(true)
             }
             activateAction.backgroundColor = .systemGreen
@@ -175,11 +175,17 @@ extension ManageDrinkerViewController {
         print("add drinker")
     }
     
-    func handleActivateDrinker() {
-//        OtterKeg
+    func handleActivateDrinker(drinker: Drinker) {
+        OtterKegFirebase.sharedFirebase.changeDrinkerStatus(drinker: drinker, newStatus: DrinkerConstants.drinkerStatusActivate) {
+            print("activateDrinker success")
+            self.setupData()
+        }
     }
     
-    func handleDeactivateDeinker() {
-        
+    func handleDisableAction(drinker: Drinker) {
+        OtterKegFirebase.sharedFirebase.changeDrinkerStatus(drinker: drinker, newStatus: DrinkerConstants.drinkerStatusDisable) {
+            print("disableDrinker success")
+            self.setupData()
+        }
     }
 }
