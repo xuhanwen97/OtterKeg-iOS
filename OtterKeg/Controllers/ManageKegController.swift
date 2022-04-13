@@ -24,6 +24,10 @@ final class ManageKegController: UIViewController {
     @IBOutlet weak var beerIdTextField: UITextField!
     @IBAction func beerIdTextFieldOnEditingChanged(_ sender: Any) { setChangeKegButtonState() }
     
+    @IBOutlet weak var kegVolumeLabel: UILabel!
+    @IBOutlet weak var kegVolumeTextField: UITextField!
+    @IBAction func kegVolumeTextFieldOnEditingChanged(_ sender: Any) { setChangeKegButtonState() }
+    
     @IBOutlet weak var changeKegButton: UIButton!
     @IBAction func changeKegButtonOnTouchUp(_ sender: Any) {
         changeKegButtonSelected()
@@ -46,6 +50,7 @@ final class ManageKegController: UIViewController {
         
         setupNavBar()
         setupChangeKegButton()
+        setupKegBeerDetailTextFields()
     }
 }
 
@@ -133,8 +138,22 @@ extension ManageKegController {
         setChangeKegButtonState()
     }
     
+    func setupKegBeerDetailTextFields() {
+        beerNameTextField.placeholder = "Beer Name"
+        
+        beerIdTextField.keyboardType = .numberPad
+        beerIdTextField.placeholder = "Untappd Beer ID"
+                
+        kegVolumeTextField.keyboardType = .numberPad
+        kegVolumeTextField.text = "41"
+        kegVolumeTextField.placeholder = "Default: 41"
+    }
+    
     func setChangeKegButtonState() {
-        if beerIdTextField.text?.count == 0 || beerNameTextField.text?.count == 0 {
+        if beerIdTextField.text?.count == 0 ||
+            beerNameTextField.text?.count == 0 ||
+            kegVolumeTextField.text?.count == 0
+        {
             disableChangeKegButton()
         } else {
             enableChangeKegButton()
@@ -174,8 +193,6 @@ extension ManageKegController {
         
         //Should not get here, if it does, something failed
         print("Swapping Kegs failed, no Untappd Beer ID")
-        
-        
     }
     
     func setLabelsForSelectedBeer(forBeer beer: Beer) {
