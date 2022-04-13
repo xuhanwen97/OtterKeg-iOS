@@ -86,6 +86,33 @@ extension ManageDrinkerViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let drinker = self.drinkersArray[indexPath.row]
+        var swipeActions: [UIContextualAction] = []
+
+        if drinker.userStatus == "active" {
+            let deactivateAction = UIContextualAction(style: .normal,
+                                                      title: "Deactivate") { [weak self] (action, view, completionHandler) in
+                self?.handleActivateDrinker()
+                completionHandler(true)
+            }
+            deactivateAction.backgroundColor = .systemRed
+            
+            swipeActions.append(deactivateAction)
+        } else {
+            let activateAction = UIContextualAction(style: .normal,
+                                                    title: "Activate") { [weak self] (action, view, completionHandler) in
+                self?.handleActivateDrinker()
+                completionHandler(true)
+            }
+            activateAction.backgroundColor = .systemGreen
+            
+            swipeActions.append(activateAction)
+        }
+        
+        return UISwipeActionsConfiguration(actions: swipeActions)
+    }
 }
 
 // Data helper functions
@@ -146,5 +173,13 @@ extension ManageDrinkerViewController {
 extension ManageDrinkerViewController {
     @objc func addDrinkerButtonTapped() {
         print("add drinker")
+    }
+    
+    func handleActivateDrinker() {
+//        OtterKeg
+    }
+    
+    func handleDeactivateDeinker() {
+        
     }
 }
