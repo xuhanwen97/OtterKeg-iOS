@@ -139,11 +139,14 @@ extension ManageKegController {
     }
     
     func setupKegBeerDetailTextFields() {
+        beerNameTextField.textColor = .black
         beerNameTextField.placeholder = "Beer Name"
         
+        beerIdTextField.textColor = .black
         beerIdTextField.keyboardType = .numberPad
         beerIdTextField.placeholder = "Untappd Beer ID"
                 
+        kegVolumeTextField.textColor = .black
         kegVolumeTextField.keyboardType = .numberPad
         kegVolumeTextField.text = "41"
         kegVolumeTextField.placeholder = "Default: 41"
@@ -207,10 +210,7 @@ extension ManageKegController {
     }
     
     func setLabelsForSelectedBeer(forBeer beer: Beer) {
-        beerNameTextField.textColor = .black
         beerNameTextField.text = String(beer.nameDeprecated)
-        
-        beerIdTextField.textColor = .black
         beerIdTextField.text = String(format: "%.0f", beer.untappdBid)
         
         setChangeKegButtonState()
